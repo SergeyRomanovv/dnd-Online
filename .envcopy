@@ -1,0 +1,10 @@
+PORT=3001
+DB_URL_DEV=postgres://sergey:123@localhost:5432/dndonline
+JWT_ACCESS_SECRET=jwt-secret-key
+JWT_REFRESH_SECRET=jwt-refresh-secret-key
+SMTP_HOST='smtp.mail.ru'
+SMTP_PORT=465
+SMTP_USER=3dstockunicorn@mail.ru
+SMTP_PASSWORD=byErv5TzkJtdPRFzUN5j
+API_URL=http://localhost:3001
+CLIENT_URL=http://localhost:3000
