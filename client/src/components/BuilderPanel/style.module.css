@@ -1,5 +1,5 @@
 .panel {
-  background-color: blueviolet;
+  background-color: rgb(121, 143, 143);
   width: 100%;
   padding: 20px;
   display: flex;
@@ -9,13 +9,36 @@
   bottom: 0;
 }
 
+.panelImages {
+  font-size: 10px;
+  border-radius: 10px;
+  background-color: #ffffffa1;
+}
+
 .panelImages img {
+  border-radius: 10px;
   width: 70px;
   height: 70px;
   cursor: pointer;
 }
 
 .panelImages img:focus {
-  border: 2px solid blue;
+  border: 3px solid #2058a1ee;
+}
+
+.title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.btnBox {
+
+}
+
+.btn {
+  padding: 7px;
+  border-radius: 7px;
+  border: 0px solid #ffffff00;
 }
 

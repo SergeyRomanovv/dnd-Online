@@ -1,27 +1,48 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.css';
+import axios from 'axios' 
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function BuilderPanel() {
+  const [blackItems, setBlockItems] = useState([]);
+  const gameMap = useSelector((store) => store.gameMap);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/builder')
+    .then((res) => {
+      setBlockItems(res.data)
+    })
+  }, []);
 
   const ttt = useSelector(state => state.tempImg);
-  const dispatch = useDispatch();
- 
+  
   const getSrcHundler= (e) => {
-    const imgSrc = e.target.alt;
+    const imgSrc = e.target.alt
     dispatch({ type: 'GET_SRC', payload: imgSrc });
+  }
+
+  const saveHandler = async () => {
+    const response = await axios.post('http://localhost:3001/builder/save', gameMap);
+    navigate('/');
   }
 
   return (
     <div className={style.panel}>
-      <div className={style.panelImages}>
-        <img src="./Stone_x4_1.jpg" alt="./Stone_x4_1.jpg" tabindex="0" onClick={(e) => getSrcHundler(e)} />
-      </div>
-      <div className={style.panelImages}>
-        <img src="./images/Sand_1.jpg" alt="./images/Sand_1.jpg" tabindex="0" onClick={(e) => getSrcHundler(e)} />
-      </div>
-      <div className={style.panelImages}>
-        <img src="./images/Grass_1.jpg" alt="./images/Grass_1.jpg" tabindex="0" onClick={(e) => getSrcHundler(e)} />
+      {
+        blackItems.map(el => (
+          <div key={el.id} className={style.panelImages}>
+            <img src={el.url} alt={el.url} tabindex="0" onClick={(e) => getSrcHundler(e)} />
+            <div className={style.title}>{el.title}</div>
+          </div>
+        ))
+      }
+      <div className={style.btnBox}>
+        <button className={style.btn} onClick={saveHandler}>SAVE</button>
       </div>
     </div>
   )

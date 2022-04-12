@@ -12,20 +12,20 @@ export default function Table() {
     const imgSrc = useSelector(store => store.tempImg);
     const [state, setState] = useState(gameMap)
 
-    console.log('beforeFunc=====>', gameMap)
+    // console.log('beforeFunc=====>', gameMap)
     
     function changeHandler (e) {
         const x = e.target.parentNode.rowIndex
         const y = e.target.cellIndex
-        console.log('xy====>', x, y)
+        // console.log('xy====>', x, y)
         dispatch({type: 'EDIT_MAP_EL', payload: {x, y, imgSrc}})
         setState((pre) => [...gameMap])
-        console.log('afterFunc=======>', gameMap)
+        // console.log('afterFunc=======>', gameMap)
     }
     console.log('localStateAfterFunc', state)
 
     const gameMap1 = gameMap.map(e => e)
-    console.log("==========>", gameMap1)
+    // console.log("==========>", gameMap1)
 
   return (
     <div className={style.gameBox}>
