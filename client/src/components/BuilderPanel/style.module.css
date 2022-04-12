@@ -1,0 +1,21 @@
+.panel {
+  background-color: blueviolet;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+}
+
+.panelImages img {
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.panelImages img:active {
+  border: 2px solid blue;
+}
+

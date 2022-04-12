@@ -3,9 +3,10 @@ const initState = {
   loginInputs: {},
   user: '',
   gameMap: [
-  [{}, {}, {}],
-  [{}, {}, {}],
-  [{}, {}, {}]
-]
+    [{}, {}, {}],
+    [{}, {}, {}],
+    [{}, {}, {}]
+  ],
+  tempImg: '',
 };
 export default initState;
