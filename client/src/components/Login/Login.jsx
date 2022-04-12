@@ -2,6 +2,7 @@ import React from 'react';
 import style from "./style.module.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import {submitSignin} from '../../redux/action/authAC';
 
 export default function Login() {
   const inputs = useSelector(store => store.loginInputs);
@@ -10,21 +11,10 @@ export default function Login() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:3001/auth/signin', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(inputs)
-    });
-    const fromBack = await response.json();
-
-    dispatch({type: 'SET_USER', payload: fromBack});
-    localStorage.user_id = fromBack.userId;
+    dispatch(submitSignin(inputs, 'login'));
     navigate('/');
-    dispatch({type: 'CLEAR_INPUTS', payload: {}});
   };
+
   const changeHandler = (e) => {
     dispatch({ type: 'USER_TYPING_LOGIN', payload: { [e.target.name]: e.target.value }})
   };

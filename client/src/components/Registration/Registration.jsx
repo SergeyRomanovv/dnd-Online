@@ -2,7 +2,7 @@ import React from 'react';
 import style from "./style.module.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {submitRegister} from '../../redux/action/authAC';
+import {submitSignin} from '../../redux/action/authAC';
 
 export default function Registration() {
   const inputs = useSelector(store => store.registerInputs);
@@ -11,7 +11,7 @@ export default function Registration() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(submitRegister(inputs));
+    dispatch(submitSignin(inputs, 'registration'));
     navigate('/');
   };
 

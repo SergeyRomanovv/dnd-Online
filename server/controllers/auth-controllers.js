@@ -44,7 +44,6 @@ async function logout(req, res, next) {
 async function activate(req, res, next) {
   try {
     const activationLink = req.params.link;
-    console.log(activationLink);
     await UserService.activate(activationLink);
     return res.redirect(process.env.CLIENT_URL);
   }catch(err){
@@ -54,7 +53,7 @@ async function activate(req, res, next) {
 
 async function refresh(req, res, next) {
   try {
-    const {refreshToken} = req.body;
+    const {refreshToken} = req.cookies;
     const userData = await UserService.refresh(refreshToken);
     res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
     return res.json(userData);
