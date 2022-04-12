@@ -1,0 +1,15 @@
+.gameBox {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.tableBox {
+    border-collapse: collapse;
+}
+
+.tableBox td {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #2e2e2e;
+}
