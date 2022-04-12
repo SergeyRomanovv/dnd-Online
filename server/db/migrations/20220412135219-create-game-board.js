@@ -11,6 +11,10 @@ module.exports = {
       board: {
         type: Sequelize.TEXT
       },
+      title: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       user_id: {
         type: Sequelize.INTEGER
       },

@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { checkAuth } from './redux/action/authAC';
+import GamePage from "./components/GamePage/GamePage";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
     <>
       <NavBar/>
       <Routes>
+        <Route path="/" element={<GamePage />} />
         <Route path="/builder" element={<Table/>} />
         <Route path="/register" element={<Registration/>} />
         <Route path="/login" element={<Login/>} />

@@ -33,12 +33,17 @@
 }
 
 .btnBox {
-
+  display: flex;
+  flex-direction: column;
+  background-color: chartreuse;
+  padding: 5px;
 }
 
 .btn {
   padding: 7px;
   border-radius: 7px;
   border: 0px solid #ffffff00;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
