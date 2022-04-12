@@ -1,31 +1,32 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Table from "./components/Table/Table";
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { checkAuth } from './redux/action/authAC';
 import GamePage from "./components/GamePage/GamePage";
+import RollDice from "./components/RollDice/RollDice";
 
 
 function App() {
 
   const dispatch = useDispatch();
-  const user = useSelector(store => store.user);
-  console.log(user);
 
-  useEffect(()=> {
+  useEffect(() => {
     if (localStorage.getItem('token')) {
       dispatch(checkAuth());
-      console.log('useEfect');
     }
-  },[]);
+  }, []);
 
   return (
     <>
-      <NavBar/>
+
+      <NavBar />
+      <Table />
+      <RollDice />
       <Routes>
         <Route path="/" element={<GamePage />} />
         <Route path="/builder" element={<Table/>} />

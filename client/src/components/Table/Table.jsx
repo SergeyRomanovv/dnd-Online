@@ -3,6 +3,7 @@ import { useState } from 'react'
 import style from './style.module.css'
 import {useSelector, useDispatch} from 'react-redux'
 import BuilderPanel from '../BuilderPanel/BuilderPanel'
+import RollDice from '../RollDice/RollDice'
 
 export default function Table() {
     console.log('Table')
