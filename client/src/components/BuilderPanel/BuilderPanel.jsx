@@ -15,13 +15,13 @@ export default function BuilderPanel() {
   return (
     <div className={style.panel}>
       <div className={style.panelImages}>
-        <img src="./Stone_x4_1.jpg" alt="./Stone_x4_1.jpg" onClick={(e) => getSrcHundler(e)} />
+        <img src="./Stone_x4_1.jpg" alt="./Stone_x4_1.jpg" tabindex="0" onClick={(e) => getSrcHundler(e)} />
       </div>
       <div className={style.panelImages}>
-        <img src="./images/Sand_1.jpg" alt="./images/Sand_1.jpg" onClick={(e) => getSrcHundler(e)} />
+        <img src="./images/Sand_1.jpg" alt="./images/Sand_1.jpg" tabindex="0" onClick={(e) => getSrcHundler(e)} />
       </div>
       <div className={style.panelImages}>
-        <img src="./images/Grass_1.jpg" alt="./images/Grass_1.jpg" onClick={(e) => getSrcHundler(e)} />
+        <img src="./images/Grass_1.jpg" alt="./images/Grass_1.jpg" tabindex="0" onClick={(e) => getSrcHundler(e)} />
       </div>
     </div>
   )
