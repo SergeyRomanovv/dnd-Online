@@ -22,8 +22,8 @@ function App() {
   return (
     <>
       <NavBar/>
-      <Table/>
       <Routes>
+        <Route path="/builder" element={<Table/>} />
         <Route path="/register" element={<Registration/>} />
         <Route path="/login" element={<Login/>} />
       </Routes>
