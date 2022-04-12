@@ -5,6 +5,7 @@ const cors = require("cors");
 const coockieParser = require("cookie-parser");
 const mainRouter = require("./routes/main.js");
 const authRouter = require("./routes/auth");
+const builderRouter = require("./routes/builderRouter");
 const errormiddleware = require('./middlewares/error-middleware');
 
 
@@ -21,6 +22,7 @@ app.use(cors({
 
 app.use("/main", mainRouter);
 app.use("/auth", authRouter);
+app.use("/builder", builderRouter);
 
 app.use(errormiddleware);
 
