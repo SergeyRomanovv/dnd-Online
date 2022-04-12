@@ -13,5 +13,6 @@ const initState = {
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
   ],
   tempImg: '',
+  boardtitle: {},
 };
 export default initState;

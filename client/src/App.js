@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { checkAuth } from './redux/action/authAC';
+import GamePage from "./components/GamePage/GamePage";
 import RollDice from "./components/RollDice/RollDice";
 
 
@@ -27,8 +28,10 @@ function App() {
       <Table />
       <RollDice />
       <Routes>
-        <Route path="/register" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<GamePage />} />
+        <Route path="/builder" element={<Table/>} />
+        <Route path="/register" element={<Registration/>} />
+        <Route path="/login" element={<Login/>} />
       </Routes>
 
     </>

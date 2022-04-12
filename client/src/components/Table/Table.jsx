@@ -30,9 +30,13 @@ export default function Table() {
   return (
     <div className={style.gameBox}>
     <table onClick={(e)=> changeHandler(e)} className={style.tableBox}>
+      <thead></thead>
+      <tbody>
         {
         gameMap.map(e => <tr>{e.map(el => <td className={style.bgImg} style={{backgroundImage: `url(${el.bgImg})`}}></td>)}</tr>)
         }
+      </tbody>
+      <tfoot></tfoot>
     </table>
     <BuilderPanel />
     </div>
