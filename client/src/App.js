@@ -7,7 +7,8 @@ import Login from "./components/Login/Login";
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { checkAuth } from './redux/action/authAC';
-
+import VideoChat from "./components/Videochat/VideoChat";
+import Room from "./components/Room/Room";
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
         <Route path="/builder" element={<Table/>} />
         <Route path="/register" element={<Registration/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/" element={<VideoChat/>} />
+        <Route path="/room/:id" element={<Room/>} />
       </Routes>
 
     </>
