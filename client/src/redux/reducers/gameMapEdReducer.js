@@ -8,7 +8,7 @@ const gameMapEdReducer = (state = initState, action) => {
             for (let j = 0; j < state[i].length; j++) {
                 if (i === payload.x && j === payload.y) {
                     console.log(state[i][j])
-                    state[i][j] = {bgImg: './Stone_x4_1.jpg'}
+                    state[i][j] = {bgImg: payload.imgSrc}
                     return state
                 }
             }
