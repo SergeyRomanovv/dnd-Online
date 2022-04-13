@@ -10,7 +10,7 @@ export default function Table() {
     const dispatch = useDispatch();
     const gameMap = useSelector((store) => store.gameMap);
     const imgSrc = useSelector(store => store.tempImg);
-    const [state, setState] = useState(gameMap)
+    const [state, setState] = useState(gameMap);
 
     // console.log('beforeFunc=====>', gameMap)
     
@@ -23,9 +23,6 @@ export default function Table() {
         // console.log('afterFunc=======>', gameMap)
     }
     console.log('localStateAfterFunc', state)
-
-    const gameMap1 = gameMap.map(e => e)
-    // console.log("==========>", gameMap1)
 
   return (
     <div className={style.gameBox}>

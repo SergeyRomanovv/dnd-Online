@@ -1,5 +1,6 @@
 import { SliderInput } from '@mui/material';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import style from './style.module.css'
 
 export default function RollDice() {
   const [inputs, setInputs] = useState({})
@@ -46,9 +47,7 @@ export default function RollDice() {
 
   return (
     <>
-      {dices.d3 ? <div>D3:{dices.d3}</div> : null}
-      {dices.d6 ? <div>D6:{dices.d6}</div> : null}
-      {dices.d20 ? <div>D20:{dices.d20}</div> : null}
+    <div className={style.mainBox}>
       <div className='d3'>
         <input onChange={changeHandler} value={inputs.d3 || ''} type='number' name='d3' min='0' max='12' />
         <img src='./images/images.jpeg' />
@@ -62,9 +61,11 @@ export default function RollDice() {
         <img src='./images/images.jpeg' />
       </div>
       <button onClick={diceHandler} >Roll</button>
+    </div>
       {dices.d3 ? <div>D3:{dices.d3}</div> : null}
       {dices.d6 ? <div>D6:{dices.d6}</div> : null}
       {dices.d20 ? <div>D20:{dices.d20}</div> : null}
+
     </>
   )
 }
