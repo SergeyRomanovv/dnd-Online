@@ -13,23 +13,23 @@ export default function GamePage() {
   const [allBoards, setAllBoards] = useState([]);
   const [oneGameBoard, setOneGameBoard] = useState([]);
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
-  const [moveAttr, setMoveAttr ] = useState({});
+  const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
 
   useEffect(() => {
     axios.get('http://localhost:3001/boards/all')
       .then((boardsFromServer) => {
         console.log(boardsFromServer.data);
-        setAllBoards(boardsFromServer.data)
+        setAllBoards(boardsFromServer.data);
       })
   }, []);
 
   const getGameHundler = (id) => {
     console.log(id);
     const game = JSON.parse(allBoards.filter(el => el.id === id)[0].board);
-    dispatch({ type: 'SET_ONE_GAME', payload: game })
+    dispatch({ type: 'SET_ONE_GAME', payload: game });
     // setOneGameBoard(game)
-  }
+  };
 
 
   function setTDHandler(e) {
@@ -37,7 +37,7 @@ export default function GamePage() {
   }
 
   function masterHandler(e) {
-    if (false) {
+    if (e.ctrlKey) {
       console.log('zzzz');
       const x = e.target.parentNode.parentNode.rowIndex;
       const y = e.target.parentNode.cellIndex;
@@ -57,9 +57,6 @@ export default function GamePage() {
       const imgSrc = e.target.alt;
       setMoveAttr({ x, y, imgSrc });
       // dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
-    } else if (e.ctrlKey) {
-      console.log(moveAttr);
-      console.log(gameBoardCoordinates);
     }
   }
 
@@ -87,9 +84,9 @@ export default function GamePage() {
               <thead></thead>
               <tbody>
                 {gamee.length ?
-                  gamee.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr 
-                  ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} />
-                  : <span></span>}</td>)}</tr>) 
+                  gamee.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
+                    ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} />
+                    : <span></span>}</td>)}</tr>)
                   : <span>Chosse a game from left side</span>
                 }
               </tbody>
