@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.css';
 import axios from 'axios';
 import { spacing } from '@mui/system';
+import RollDice from '../RollDice/RollDice';
 
 export default function GamePage() {
 
@@ -29,6 +30,7 @@ export default function GamePage() {
     dispatch({ type: 'SET_ONE_GAME', payload: game })
     // setOneGameBoard(game)
   }
+
 
   function setTDHandler(e) {
     console.log(1555555555555555555551);
@@ -85,8 +87,10 @@ export default function GamePage() {
               <thead></thead>
               <tbody>
                 {gamee.length ?
-                  gamee.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} /> : <span></span>}</td>)}</tr>) :
-                  <span>Chosse a game from left side</span>
+                  gamee.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr 
+                  ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} />
+                  : <span></span>}</td>)}</tr>) 
+                  : <span>Chosse a game from left side</span>
                 }
               </tbody>
               <tfoot></tfoot>
@@ -96,10 +100,12 @@ export default function GamePage() {
         <div className={style.rightSide}>right side</div>
       </div>
       <div className={style.footerPanel}>
-        <span>bottom panel</span>
-        <img src="./images/items/Bonefire1.png" alt="./images/items/Bonefire1.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-        <img src="./images/items/Elf2.png" alt="./images/items/Elf2.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-        <img src="./images/items/Chest1.png" alt="./images/items/Chest1.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+        <RollDice />
+        <div>
+          <img src="./images/items/Bonefire1.png" alt="./images/items/Bonefire1.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="./images/items/Elf2.png" alt="./images/items/Elf2.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="./images/items/Chest1.png" alt="./images/items/Chest1.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+        </div>
       </div>
     </>
   )

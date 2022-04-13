@@ -2,6 +2,7 @@
     justify-content: space-between;
     background-color: rgb(62, 62, 109);
     display: flex;
+    /* width: 60%; */
 }
 
 .diceBox {
