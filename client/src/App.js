@@ -28,11 +28,11 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        {/* <Route path="/" element={<GamePage />} /> */}
+        <Route path="/" element={<GamePage />} />
         <Route path="/builder" element={<Table/>} />
         <Route path="/register" element={<Registration/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/" element={<VideoChat/>} />
+        {/* <Route path="/" element={<VideoChat/>} /> */}
         <Route path="/room/:id" element={<Room/>} />
         <Route path="/dice" element={<RollDice />} />
       </Routes>
