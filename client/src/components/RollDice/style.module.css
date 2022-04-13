@@ -1,3 +1,10 @@
 .mainBox {
+    background-color: rgb(62, 62, 109);
     display: flex;
+}
+
+.mainBox input {
+    width: 40px;
+    border: none;
+    outline: none;
 }
