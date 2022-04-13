@@ -12,33 +12,35 @@ export default function RollDice() {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     // console.log(inputs);
   }
-  const randomD3 = Math.floor(Math.random() * 3 + 1)
-  const randomD6 = Math.floor(Math.random() * 6 + 1)
-  const randomD20 = Math.floor(Math.random() * 20 + 1)
+
+  const random = (edges) => {
+    return Math.floor(Math.random() * edges + 1)
+  }
 
   const diceHandler = () => {
     // let allSum = []
-    let sumd3 = []
+    let sumd4 = []
     let sumd6 = []
     let sumd20 = []
-    if (inputs.d3) {
-      for (let i = 0; i < inputs.d3; i++) {
-        sumd3.push(`\nDice ${i + 1} : ===> ` + Math.floor(Math.random() * 3 + 1))
+    if (inputs.d4) {
+      for (let i = 0; i < inputs.d4; i++) {
+        sumd4.push(random(4))
       }
     }
     if (inputs.d6) {
       for (let i = 0; i < inputs.d6; i++) {
-        sumd6.push(`Dice ${i + 1} : ===> ${Math.floor(Math.random() * 6 + 1)},`)
+        sumd6.push(random(6))
       }
     }
     if (inputs.d20) {
       for (let i = 0; i < inputs.d20; i++) {
-        sumd20.push(`\nDice ${i + 1} : ===> ` + Math.floor(Math.random() * 20 + 1))
+        sumd20.push(random(20))
       }
     }
     // return `D3:${sumd3}\n D6:${sumd6}\n D20${sumd20}`
     // console.log(` Трёхгранный:${sumd3}\n Шестигранный:${sumd6}\n Двадцатигранник:${sumd20}`);
-    setDices((prev) => ({ ...prev, d3: sumd3, d6: sumd6, d20: sumd20 }))
+    setDices((prev) => ({ ...prev, d4: sumd4, d6: sumd6, d20: sumd20 }))
+    console.log(dices.d4)
     setInputs({})
   }
   // console.log(diceHandler());
@@ -47,25 +49,28 @@ export default function RollDice() {
 
   return (
     <>
-    <div className={style.mainBox}>
-      <div className='d3'>
-        <input  onChange={changeHandler} value={inputs.d3 || ''} type='number' name='d3' min='0' max='12' />
-        <img src='./images/dices/d4y.png' />
+      <div className={style.mainBox}>
+        <div className={style.box}>
+          <div className={style.diceBox}>
+            <img src='./images/dices/d4y1.png' />
+            <input onChange={changeHandler} value={inputs.d4 || ''} type='number' name='d4' min='0' max='12' />
+          </div>
+          <div className={style.diceBox}>
+            <img src='./images/dices/d6y1.png' />
+            <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
+          </div>
+          <div className={style.diceBox}>
+            <img src='./images/dices/d20y1.png' />
+            <input onChange={changeHandler} value={inputs.d20 || ''} type='number' name='d20' min='0' max='12' />
+          </div>
+        </div>
+        <div className={style.resultBox}>
+          <button onClick={diceHandler} >Roll</button>
+          {dices.d4?.length > 0 ? <div>D4: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+          {dices.d6?.length > 0 ? <div>D6: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+          {dices.d20?.length > 0 ? <div>D20: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+        </div>
       </div>
-      <div className='d6'>
-        <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
-        <img src='./images/dices/d6y.png' />
-      </div>
-      <div className='d20'>
-        <input onChange={changeHandler} value={inputs.d20 || ''} type='number' name='d20' min='0' max='12' />
-        <img src='./images/dices/d20y.png' />
-      </div>
-      <button onClick={diceHandler} >Roll</button>
-    </div>
-      {dices.d3 ? <div>D3:{dices.d3}</div> : null}
-      {dices.d6 ? <div>D6:{dices.d6}</div> : null}
-      {dices.d20 ? <div>D20:{dices.d20}</div> : null}
-
     </>
   )
 }

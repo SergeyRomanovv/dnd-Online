@@ -1,10 +1,38 @@
 .mainBox {
+    justify-content: space-between;
     background-color: rgb(62, 62, 109);
     display: flex;
 }
 
+.diceBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .mainBox input {
+    font-weight: 600;
+    background-color: rgba(211, 211, 211, 0.808);
     width: 40px;
     border: none;
     outline: none;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.mainBox img {
+    height: 60px;
+}
+
+.box {
+    width: 70%;
+    justify-content: space-around;
+    display: flex;
+}
+
+.resultBox {
+    color: rgb(255, 255, 255);
+    display: flex;
+    width: 30%;
 }
