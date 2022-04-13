@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   GameBoard.init({
     board: DataTypes.TEXT,
+    title: DataTypes.STRING,
     user_id: DataTypes.INTEGER
   }, {
     sequelize,
