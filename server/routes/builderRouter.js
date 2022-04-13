@@ -4,7 +4,7 @@ const { Block, GameBoard } = require('../db/models')
 router.get("/", async (req, res) => {
   try {
     const allBlocks = await Block.findAll({ raw: true })
-    console.log(allBlocks);
+    // console.log(allBlocks);
     res.json(allBlocks);
   } catch (err) {
     console.log(err);

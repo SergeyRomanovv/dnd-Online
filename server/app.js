@@ -4,13 +4,16 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const coockieParser = require("cookie-parser");
+
 const {version, validate} = require("uuid");
 const mainRouter = require("./routes/main.js");
 const authRouter = require("./routes/auth");
 const builderRouter = require("./routes/builderRouter");
+const boardsRouter = require('./routes/boardsRouter');
 const errormiddleware = require("./middlewares/error-middleware");
 const dbConnectCheck = require("./db/dbConnectCheck");
 const ACTIONS = require("./action/soketAction");
+
 
 // Импортируем созданный в отдельный файлах рутеры.
 const app = express();
@@ -32,6 +35,7 @@ app.use(
 app.use("/main", mainRouter);
 app.use("/auth", authRouter);
 app.use("/builder", builderRouter);
+app.use('/boards', boardsRouter);
 
 app.use(errormiddleware);
 

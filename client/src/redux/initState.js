@@ -14,5 +14,6 @@ const initState = {
   ],
   tempImg: '',
   boardtitle: {},
+  oneGame: [],
 };
 export default initState;
