@@ -49,16 +49,16 @@ export default function RollDice() {
     <>
     <div className={style.mainBox}>
       <div className='d3'>
-        <input onChange={changeHandler} value={inputs.d3 || ''} type='number' name='d3' min='0' max='12' />
-        <img src='./images/images.jpeg' />
+        <input  onChange={changeHandler} value={inputs.d3 || ''} type='number' name='d3' min='0' max='12' />
+        <img src='./images/dices/d4y.png' />
       </div>
       <div className='d6'>
         <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
-        <img src='./images/images.jpeg' />
+        <img src='./images/dices/d6y.png' />
       </div>
       <div className='d20'>
         <input onChange={changeHandler} value={inputs.d20 || ''} type='number' name='d20' min='0' max='12' />
-        <img src='./images/images.jpeg' />
+        <img src='./images/dices/d20y.png' />
       </div>
       <button onClick={diceHandler} >Roll</button>
     </div>
