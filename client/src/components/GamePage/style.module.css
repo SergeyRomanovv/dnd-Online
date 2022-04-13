@@ -70,6 +70,10 @@
   border: 1px solid #4e4e4e;
 }
 
+.tableBox td:focus {
+  outline: 2px solid white;
+}
+
 .bgImg {
   background-size: contain;
 }
