@@ -34,7 +34,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         {/* <Route path="/" element={<VideoChat/>} /> */}
         <Route path="/room/:id" element={<Room/>} />
-        <Route path="/dice" element={<RollDice />} />
+        {/* <Route path="/dice" element={<RollDice />} /> */}
       </Routes>
     </>
   );
