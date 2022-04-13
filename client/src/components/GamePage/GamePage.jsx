@@ -61,7 +61,7 @@ export default function GamePage() {
               <thead></thead>
               <tbody>
                 { gamee.length ?
-                  gamee.map(e => <tr>{e.map(el => <td className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr ? <img src={el.attr} alt="dnd online" style={{backgroundColor: '#ffffff00'}} /> : <span></span>}</td>)}</tr>) :
+                  gamee.map(e => <tr>{e.map(el => <td className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr ? <img src={el.attr} alt="dnd online" style={{backgroundColor: '#ffffff00', width: '65px'}} /> : <span></span>}</td>)}</tr>) :
                   <span>Chosse a game from left side</span>
                 }
               </tbody>
@@ -73,8 +73,9 @@ export default function GamePage() {
       </div>
       <div className={style.footerPanel}>
         <span>bottom panel</span>
-        <img src="./images/5.png" alt="./images/5.png" onClick={getImgSrcHundler} />
-        <img src="./images/5.png" alt="./images/5.png" onClick={getImgSrcHundler} />
+        <img src="./images/items/Bonefire1.png" alt="./images/items/Bonefire1.png" style={{width: '60px'}} onClick={getImgSrcHundler} />
+        <img src="./images/items/Elf2.png" alt="./images/items/Elf2.png" style={{width: '60px'}} onClick={getImgSrcHundler} />
+        <img src="./images/items/Chest1.png" alt="./images/items/Chest1.png" style={{width: '60px'}} onClick={getImgSrcHundler} />
       </div>
     </>
   )

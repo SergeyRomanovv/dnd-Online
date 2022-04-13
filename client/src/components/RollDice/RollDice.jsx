@@ -66,9 +66,9 @@ export default function RollDice() {
         </div>
         <div className={style.resultBox}>
           <button onClick={diceHandler} >Roll</button>
-          {dices.d4?.length > 0 ? <div>D4: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-          {dices.d6?.length > 0 ? <div>D6: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-          {dices.d20?.length > 0 ? <div>D20: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+          {dices.d4.length > 0 ? <div>D4: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+          {dices.d6.length > 0 ? <div>D6: {dices.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+          {dices.d20.length > 0 ? <div>D20: {dices.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
         </div>
       </div>
     </>
