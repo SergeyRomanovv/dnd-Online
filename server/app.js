@@ -3,9 +3,11 @@ const { PORT } = process.env || 3001;
 const express = require("express");
 const cors = require("cors");
 const coockieParser = require("cookie-parser");
+
 const mainRouter = require("./routes/main.js");
 const authRouter = require("./routes/auth");
 const builderRouter = require("./routes/builderRouter");
+const boardsRouter = require('./routes/boardsRouter');
 const errormiddleware = require('./middlewares/error-middleware');
 const dbConnectCheck = require('./db/dbConnectCheck');
 
@@ -26,6 +28,7 @@ app.use(cors({
 app.use("/main", mainRouter);
 app.use("/auth", authRouter);
 app.use("/builder", builderRouter);
+app.use('/boards', boardsRouter);
 
 app.use(errormiddleware);
 
