@@ -10,9 +10,7 @@ import { checkAuth } from './redux/action/authAC';
 import GamePage from "./components/GamePage/GamePage";
 import RollDice from "./components/RollDice/RollDice";
 
-
 function App() {
-
   const dispatch = useDispatch();
 
   useEffect(() => {

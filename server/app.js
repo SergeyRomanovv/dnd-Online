@@ -1,16 +1,16 @@
 require("dotenv").config();
 const { PORT } = process.env || 3001;
 const express = require("express");
+const ws = require("ws");
 const cors = require("cors");
 const coockieParser = require("cookie-parser");
 
 const mainRouter = require("./routes/main.js");
 const authRouter = require("./routes/auth");
 const builderRouter = require("./routes/builderRouter");
-const boardsRouter = require('./routes/boardsRouter');
+const boardsRouter = require("./routes/boardsRouter");
 const errormiddleware = require("./middlewares/error-middleware");
 const dbConnectCheck = require("./db/dbConnectCheck");
-
 
 // Импортируем созданный в отдельный файлах рутеры.
 const app = express();
@@ -30,14 +30,30 @@ app.use(
 app.use("/main", mainRouter);
 app.use("/auth", authRouter);
 app.use("/builder", builderRouter);
-app.use('/boards', boardsRouter);
+app.use("/boards", boardsRouter);
 
 app.use(errormiddleware);
 
+const httpServer = app.listen(PORT, () => {
+  console.log(`server started PORT: ${PORT}`);
+});
+
+const wsServer = new ws.WebSocketServer({
+  server: httpServer,
+});
+
 const start = async () => {
   try {
-    app.listen(PORT, () => {
-      console.log(`server started PORT: ${PORT}`);
+    wsServer.on("connection", (clients) => {
+      console.log(">>>> client connected. clients: ", wsServer.clients.size);
+      clients.on("message", (message) => {
+        const input = message.toString("utf-8");
+        console.log(input);
+        wsServer.clients.forEach((client)=>{
+          client.send(input);
+      });
+
+      });
     });
   } catch (err) {
     console.error(err);
