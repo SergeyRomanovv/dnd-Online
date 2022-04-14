@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.css';
 import axios from 'axios';
 import RollDice from '../RollDice/RollDice';
-import TestWS from '../TestWS/TestWS';
+import Room from '../Room/Room';
 
 export default function GamePage() {
   const oneGame = useSelector(state => state.oneGame);
@@ -132,7 +132,7 @@ export default function GamePage() {
             </table>
           </div>
         </div>
-        <div className={style.rightSide}>right side</div>
+        <div className={style.rightSide}> <Room/> </div>
       </div>
       <div className={togle}>
         <button onClick={togleHundler} className={style.gamePanelBtn}>Game Panel ︽</button>
