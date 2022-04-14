@@ -19,11 +19,12 @@
   border-radius: 10px;
   width: 70px;
   height: 70px;
-  cursor: pointer;
+  cursor: grab;
 }
 
 .panelImages img:focus {
   border: 3px solid #2058a1ee;
+  cursor: grabbing;
 }
 
 .title {
