@@ -43,7 +43,11 @@
 }
 
 .footerPanel img {
-  cursor: pointer;
+  cursor: grab;
+}
+
+.footerPanel img:active {
+  cursor: grabbing;
 }
 
 .chooseBoard {
@@ -68,6 +72,14 @@
   width: 70px;
   height: 70px;
   border: 1px solid #4e4e4e;
+}
+
+.tableBox td img {
+  cursor: grab;
+}
+
+.tableBox td img:active {
+  cursor: grabbing;
 }
 
 .tableBox td:focus {

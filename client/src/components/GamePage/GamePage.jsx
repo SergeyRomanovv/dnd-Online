@@ -7,7 +7,7 @@ import RollDice from '../RollDice/RollDice';
 
 export default function GamePage() {
 
-  const gamee = useSelector(state => state.oneGame);
+  const oneGame = useSelector(state => state.oneGame);
 
   const dispatch = useDispatch();
   const [allBoards, setAllBoards] = useState([]);
@@ -33,11 +33,16 @@ export default function GamePage() {
 
 
   function setTDHandler(e) {
-    console.log(1555555555555555555551);
+    console.log(1111);
+    const x = e.target.parentNode.rowIndex;
+    const y = e.target.cellIndex;
+    setGameBoardCoordinates({ x, y });
+    console.log('xy', x, y, imgSrc);
+    dispatch({ type: 'SET_ATTR', payload: { x, y, imgSrc } });
   }
 
   function masterHandler(e) {
-    if (e.ctrlKey) {
+    if (e.altKey) {
       console.log('zzzz');
       const x = e.target.parentNode.parentNode.rowIndex;
       const y = e.target.parentNode.cellIndex;
@@ -45,18 +50,23 @@ export default function GamePage() {
       console.log('doubleclick x y', x, y, imgSrc);
       dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
     } else if (e.shiftKey) {
-      const x = e.target.parentNode.rowIndex;
-      const y = e.target.cellIndex;
-      setGameBoardCoordinates({ x, y });
-      console.log('xy', x, y, imgSrc);
-      dispatch({ type: 'SET_ATTR', payload: { x, y, imgSrc } });
-    } else if (e.altKey) {
       console.log(11155);
       const x = e.target.parentNode.parentNode.rowIndex;
       const y = e.target.parentNode.cellIndex;
       const imgSrc = e.target.alt;
       setMoveAttr({ x, y, imgSrc });
       // dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
+    } else if (e.ctrlKey) {
+      console.log(moveAttr);
+      const { x, y, imgSrc } = moveAttr;
+      const xx = e.target.parentNode.rowIndex;
+      const yy = e.target.cellIndex;
+      const setObj = { x: xx, y: yy, imgSrc };
+      const delObj = { x, y, imgSrc: '' };
+      console.log('set', setObj, 'del', delObj);
+      dispatch({ type: 'DEL_ATTR', payload: delObj });
+      dispatch({ type: 'SET_ATTR', payload: setObj });
+      setMoveAttr({});
     }
   }
 
@@ -64,7 +74,7 @@ export default function GamePage() {
     setImgSrc(e.target.alt);
   }
 
-  console.log('*****************', gamee);
+  console.log('*****************', oneGame);
 
   return (
     <>
@@ -80,11 +90,11 @@ export default function GamePage() {
         <div className={style.mainSide}>
           <p>main gamePage</p>
           <div className={style.gameBox}>
-            <table className={style.tableBox} onClick={(e) => masterHandler(e)} onDoubleClick={() => setTDHandler}>
+            <table className={style.tableBox} onClick={(e) => masterHandler(e)} onDoubleClick={(e) => setTDHandler(e)}>
               <thead></thead>
               <tbody>
-                {gamee.length ?
-                  gamee.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
+                {oneGame.length ?
+                  oneGame.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
                     ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} />
                     : <span></span>}</td>)}</tr>)
                   : <span>Chosse a game from left side</span>
