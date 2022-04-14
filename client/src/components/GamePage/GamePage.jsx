@@ -111,7 +111,6 @@ export default function GamePage() {
       {/* <div className={style.topPanel}>top panel</div> */}
       <div className={style.gamePage}>
         <div className={style.leftSide}>
-          <p>left side</p>
           <div className={style.chooseBoard}>
             <p>chosse board</p>
             {allBoards.map((board) => <button key={board.id} onClick={() => getGameHundler(board.id)}>{board.title}</button>)}

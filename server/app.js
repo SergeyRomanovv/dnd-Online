@@ -27,7 +27,7 @@ app.use(
   })
 );
 
-app.use("/main", mainRouter);
+app.use("/", mainRouter);
 app.use("/auth", authRouter);
 app.use("/builder", builderRouter);
 app.use("/boards", boardsRouter);
