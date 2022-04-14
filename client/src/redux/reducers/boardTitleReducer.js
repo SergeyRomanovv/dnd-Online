@@ -5,7 +5,10 @@ const boardTitleReducer = (state = initState, action) => {
   switch (type) {
 
     case "SET_BOARD_TITLE":
-      return {...state, ...payload}
+      return {...state, ...payload};
+
+    case "DEL_BOARD_TITLE":
+      return payload;
 
     default:
       return state;

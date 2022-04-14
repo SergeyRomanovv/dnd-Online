@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.css';
-import axios from 'axios' 
+import axios from 'axios'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,27 +15,31 @@ export default function BuilderPanel() {
 
   useEffect(() => {
     axios.get('http://localhost:3001/builder')
-    .then((res) => {
-      setBlockItems(res.data)
-    })
+      .then((res) => {
+        setBlockItems(res.data)
+      })
   }, []);
 
   const ttt = useSelector(state => state.tempImg);
-  
-  const getSrcHundler= (e) => {
+
+  const getSrcHundler = (e) => {
     const imgSrc = e.target.alt;
     // console.log('rrrrrrrrrrrrrrrrrrrrr', imgSrc);
     dispatch({ type: 'GET_SRC', payload: imgSrc });
   }
 
   const saveHandler = async () => {
-    const response = await axios.post('http://localhost:3001/builder/save', {board: gameMap, boardtitle});
-    // dispatch({ type: 'SET_BOARD_TITLE', payload: '' });
-    navigate('/');
+    if (boardtitle.title) {
+      const response = await axios.post('http://localhost:3001/builder/save', { board: gameMap, boardtitle });
+      dispatch({ type: 'DEL_BOARD_TITLE', payload: {} });
+      navigate('/');
+    } else {
+      alert('Введите название поля для сохранения!');
+    }
   }
 
   const titleHandler = (ev) => {
-    dispatch({ type: 'SET_BOARD_TITLE', payload: {[ev.target.name]: ev.target.value} });
+    dispatch({ type: 'SET_BOARD_TITLE', payload: { [ev.target.name]: ev.target.value } });
   }
 
   return (
@@ -49,10 +53,10 @@ export default function BuilderPanel() {
         ))
       }
       <div className={style.btnBox}>
-        
+
         <input type="text" name='title' value={boardtitle.title || ''} onChange={titleHandler} />
         <button className={style.btn} onClick={saveHandler}>SAVE</button>
-        
+
       </div>
     </div>
   )
