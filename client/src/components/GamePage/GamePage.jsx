@@ -20,16 +20,16 @@ export default function GamePage() {
     axios.get('http://localhost:3001/boards/all')
       .then((boardsFromServer) => {
         console.log(boardsFromServer.data);
-        setAllBoards(boardsFromServer.data)
+        setAllBoards(boardsFromServer.data);
       })
   }, []);
 
   const getGameHundler = (id) => {
     console.log(id);
     const game = JSON.parse(allBoards.filter(el => el.id === id)[0].board);
-    dispatch({ type: 'SET_ONE_GAME', payload: game })
+    dispatch({ type: 'SET_ONE_GAME', payload: game });
     // setOneGameBoard(game)
-  }
+  };
 
 
   function setTDHandler(e) {
