@@ -14,6 +14,7 @@ export default function GamePage() {
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
   const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
+  const [togle, setTogle] = useState(style.footerPanel1);
 
 // ! ------------------------------Web Socket---------------------------------------
   const [isPaused, setIsPaused] = useState(false);
@@ -39,7 +40,6 @@ export default function GamePage() {
   }, [oneGame, isPaused]);
 // ? ------------------------------Web Socket---------------------------------------
   
-  const [togle, setTogle] = useState(style.footerPanel1);
   
   useEffect(() => {
     axios.get('http://localhost:3001/boards/all')
@@ -135,12 +135,12 @@ export default function GamePage() {
         <div className={style.rightSide}> <Room/> </div>
       </div>
       <div className={togle}>
-        <button onClick={togleHundler} className={style.gamePanelBtn}>Game Panel ︽</button>
+        <button onClick={togleHundler} className={style.gamePanelBtn}>Game Panel <img src="../images/icons/chevron-down.svg"/></button>
         <RollDice />
         <div className={style.attributies}>
-          <img src="./images/items/Bonefire1.png" alt="./images/items/Bonefire1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-          <img src="./images/items/Elf2.png" alt="./images/items/Elf2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-          <img src="./images/items/Chest1.png" alt="./images/items/Chest1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/items/Bonefire1.png" alt="../images/items/Bonefire1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/items/Elf2.png" alt="../images/items/Elf2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/items/Chest1.png" alt="../images/items/Chest1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
         </div>
       </div>
     </>
