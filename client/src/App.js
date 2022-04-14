@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { checkAuth } from './redux/action/authAC';
 import GamePage from "./components/GamePage/GamePage";
 import RollDice from "./components/RollDice/RollDice";
+import VideoChat from "./components/Videochat/VideoChat";
+import Room from "./components/Room/Room";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +29,8 @@ function App() {
         <Route path="/builder" element={<Table/>} />
         <Route path="/register" element={<Registration/>} />
         <Route path="/login" element={<Login/>} />
-        {/* <Route path="/dice" element={<RollDice />} /> */}
+        <Route path="/video" element={<VideoChat/>} />
+        <Route path="/room/:id" element={<Room/>} />
       </Routes>
     </>
   );
