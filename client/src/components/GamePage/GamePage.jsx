@@ -14,6 +14,7 @@ export default function GamePage() {
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
   const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
+
 // ! ------------------------------Web Socket---------------------------------------
   const [isPaused, setIsPaused] = useState(false);
   const [response, setResponse] = useState("");
@@ -37,6 +38,9 @@ export default function GamePage() {
     setIsPaused(true);
   }, [oneGame, isPaused]);
 // ? ------------------------------Web Socket---------------------------------------
+  
+  const [togle, setTogle] = useState(style.footerPanel1);
+  
   useEffect(() => {
     axios.get('http://localhost:3001/boards/all')
       .then((boardsFromServer) => {
@@ -91,7 +95,16 @@ export default function GamePage() {
     setImgSrc(e.target.alt);
   }
 
-  // console.log('*****************', oneGame);
+  function togleHundler() {
+    if (togle === style.footerPanel) {
+      setTogle(style.footerPanel1)
+      console.log(togle);
+    } else {
+      setTogle(style.footerPanel)
+    }
+  }
+
+  console.log('*****************', oneGame);
 
   return (
     <>
@@ -122,12 +135,13 @@ export default function GamePage() {
         </div>
         <div className={style.rightSide}>right side</div>
       </div>
-      <div className={style.footerPanel}>
+      <div className={togle}>
+        <button onClick={togleHundler} className={style.gamePanelBtn}>Game Panel ︽</button>
         <RollDice />
-        <div>
-          <img src="./images/items/Bonefire1.png" alt="./images/items/Bonefire1.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-          <img src="./images/items/Elf2.png" alt="./images/items/Elf2.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-          <img src="./images/items/Chest1.png" alt="./images/items/Chest1.png" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+        <div className={style.attributies}>
+          <img src="./images/items/Bonefire1.png" alt="./images/items/Bonefire1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="./images/items/Elf2.png" alt="./images/items/Elf2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="./images/items/Chest1.png" alt="./images/items/Chest1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
         </div>
       </div>
     </>
