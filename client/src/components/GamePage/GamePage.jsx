@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.css';
 import axios from 'axios';
-import { spacing } from '@mui/system';
 import RollDice from '../RollDice/RollDice';
+import TestWS from '../TestWS/TestWS';
 
 export default function GamePage() {
-
   const oneGame = useSelector(state => state.oneGame);
 
   const dispatch = useDispatch();
@@ -15,13 +14,35 @@ export default function GamePage() {
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
   const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
+// ! ------------------------------Web Socket---------------------------------------
+  const [isPaused, setIsPaused] = useState(false);
+  const [response, setResponse] = useState("");
+  const ws = useRef();
 
+  useEffect(() => {
+    if (!isPaused) {
+      ws.current = new WebSocket("ws://localhost:3001/");
+      ws.current.onopen = () => {
+        console.log("Socket подключен");
+      };
+    }
+    setTimeout(() => {
+      ws.current.send(JSON.stringify(oneGame));
+    }, 0);
+
+    ws.current.onmessage = (event) => {
+      setResponse(JSON.parse(event.data));
+    };
+
+    setIsPaused(true);
+  }, [oneGame, isPaused]);
+// ? ------------------------------Web Socket---------------------------------------
   useEffect(() => {
     axios.get('http://localhost:3001/boards/all')
       .then((boardsFromServer) => {
-        console.log(boardsFromServer.data);
+        // console.log(boardsFromServer.data);
         setAllBoards(boardsFromServer.data);
-      })
+      });
   }, []);
 
   const getGameHundler = (id) => {
@@ -33,7 +54,6 @@ export default function GamePage() {
 
 
   function setTDHandler(e) {
-    console.log(1111);
     const x = e.target.parentNode.rowIndex;
     const y = e.target.cellIndex;
     setGameBoardCoordinates({ x, y });
@@ -43,27 +63,24 @@ export default function GamePage() {
 
   function masterHandler(e) {
     if (e.altKey) {
-      console.log('zzzz');
       const x = e.target.parentNode.parentNode.rowIndex;
       const y = e.target.parentNode.cellIndex;
       setGameBoardCoordinates({ x, y });
-      console.log('doubleclick x y', x, y, imgSrc);
+      // console.log('doubleclick x y', x, y, imgSrc);
       dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
     } else if (e.shiftKey) {
-      console.log(11155);
       const x = e.target.parentNode.parentNode.rowIndex;
       const y = e.target.parentNode.cellIndex;
       const imgSrc = e.target.alt;
       setMoveAttr({ x, y, imgSrc });
       // dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
     } else if (e.ctrlKey) {
-      console.log(moveAttr);
       const { x, y, imgSrc } = moveAttr;
       const xx = e.target.parentNode.rowIndex;
       const yy = e.target.cellIndex;
       const setObj = { x: xx, y: yy, imgSrc };
       const delObj = { x, y, imgSrc: '' };
-      console.log('set', setObj, 'del', delObj);
+      // console.log('set', setObj, 'del', delObj);
       dispatch({ type: 'DEL_ATTR', payload: delObj });
       dispatch({ type: 'SET_ATTR', payload: setObj });
       setMoveAttr({});
@@ -74,7 +91,7 @@ export default function GamePage() {
     setImgSrc(e.target.alt);
   }
 
-  console.log('*****************', oneGame);
+  // console.log('*****************', oneGame);
 
   return (
     <>
@@ -88,13 +105,12 @@ export default function GamePage() {
           </div>
         </div>
         <div className={style.mainSide}>
-          <p>main gamePage</p>
           <div className={style.gameBox}>
             <table className={style.tableBox} onClick={(e) => masterHandler(e)} onDoubleClick={(e) => setTDHandler(e)}>
               <thead></thead>
               <tbody>
-                {oneGame.length ?
-                  oneGame.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
+                {response.length ?
+                  response.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
                     ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} />
                     : <span></span>}</td>)}</tr>)
                   : <span>Chosse a game from left side</span>

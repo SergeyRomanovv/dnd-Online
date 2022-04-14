@@ -1,0 +1,92 @@
+.gamePage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: baseline;
+}
+
+.leftSide {
+  border: 1px solid black;
+  min-height: 100vh;
+  width: 10%;
+}
+
+.mainSide {
+  border: 1px solid black;
+  min-height: 100vh;
+  width: 80%;
+  text-align: center;
+}
+
+.rightSide {
+  border: 1px solid black;
+  min-height: 100vh;
+  width: 10%;
+}
+
+.topPanel {
+  width: 100%;
+  padding: 20px;
+  background-color: chartreuse;
+  position: sticky;
+  top: 0;
+}
+
+.footerPanel {
+  width: 100%;
+  padding: 20px;
+  background-color: aqua;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footerPanel img {
+  cursor: grab;
+}
+
+.footerPanel img:active {
+  cursor: grabbing;
+}
+
+.chooseBoard {
+  background-color: chocolate;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.gameBox {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.tableBox {
+  border-collapse: collapse;
+}
+
+.tableBox td {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #4e4e4e;
+}
+
+.tableBox td img {
+  cursor: grab;
+}
+
+.tableBox td img:active {
+  cursor: grabbing;
+}
+
+.tableBox td:focus {
+  outline: 2px solid white;
+}
+
+.bgImg {
+  background-size: contain;
+}
+

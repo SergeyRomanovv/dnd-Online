@@ -1,11 +1,9 @@
 const router = require("express").Router();
-const { Block, GameBoard } = require('../db/models')
+const { Block, GameBoard } = require('../db/models');
 
 router.get('/all', async (req, res) => {
   try {
-    const allBoardss = await GameBoard.findAll({ raw: true })
-    console.log(allBoardss);
-    // allBoardss.forEach(el => JSON.parse(el.board))
+    const allBoardss = await GameBoard.findAll({ raw: true });
     res.json(allBoardss);
   } catch (err) {
     console.log(err);
