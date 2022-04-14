@@ -71,15 +71,17 @@
 }
 
 .gamePanelBtn {
-  background-color: crimson;
+  width: 10%;
+  background-color: rgb(62, 62, 109);
   color: #fff;
   border: none;
   cursor: pointer;
   padding: 5px;
+  border-radius: 12px 12px 0px 0px;
 }
 
 .gamePanelBtn:hover {
-  background-color: rgb(218, 14, 150);
+  background-color: rgba(69, 69, 119, 0.651);
 }
 
 /* footer toogle */
@@ -88,7 +90,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: chartreuse;
+  background-color: rgb(48, 48, 87);
 }
 
 .attributies img:focus {
@@ -104,7 +106,7 @@
 }
 
 .chooseBoard {
-  background-color: chocolate;
+  background-color: rgba(210, 105, 30, 0);
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -112,7 +114,8 @@
 }
 
 .gameBox {
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 200px;
   display: flex;
   justify-content: center;
 }

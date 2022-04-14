@@ -111,6 +111,13 @@ module.exports = {
           createdAt: new Date(), // в seeder'ах нужно добавлять это руками
           updatedAt: new Date(),
         },
+        {
+          title: 'WALL 1',
+          url: './images/Wall_1.png',
+          type: 'wall',
+          createdAt: new Date(), // в seeder'ах нужно добавлять это руками
+          updatedAt: new Date(),
+        },
         
       ],
       {}

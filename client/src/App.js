@@ -1,6 +1,7 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Table from "./components/Table/Table";
+import Lobby from "./components/Lobby/Lobby";
 import { Routes, Route } from "react-router-dom";
 import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
@@ -23,7 +24,8 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<GamePage />} />
+        <Route path="/" element={<Lobby />} />
+        <Route path="/game" element={<GamePage />} />
         <Route path="/builder" element={<Table/>} />
         <Route path="/register" element={<Registration/>} />
         <Route path="/login" element={<Login/>} />
