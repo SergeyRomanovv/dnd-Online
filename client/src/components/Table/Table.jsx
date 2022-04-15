@@ -57,7 +57,7 @@ export default function Table() {
         table.push(oneRow);
       }
       dispatch({ type: 'GENERATE_BOARD', payload: table})
-      setSize({});
+      // setSize({});
     }
 
     function generateRandomHundler(e, obj) {

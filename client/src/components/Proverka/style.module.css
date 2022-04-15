@@ -1,0 +1,5 @@
+.mainBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
