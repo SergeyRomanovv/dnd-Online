@@ -26,14 +26,14 @@ function VideoChat() {
           <li key={roomID}>
             {roomID}
             <button onClick={() => {
-              navigate(`/room/${roomID}`);
+              navigate(`/game/${roomID}`);
             }}>JOIN ROOM</button>
           </li>
         ))}
       </ul>
 
       <button onClick={() => {
-        navigate(`/room/${v4()}`);
+        navigate(`/game/${v4()}`);
       }}>Create New Room</button>
     </div>
   );
