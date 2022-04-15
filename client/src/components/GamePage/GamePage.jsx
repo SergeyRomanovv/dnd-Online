@@ -14,7 +14,7 @@ export default function GamePage() {
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
   const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
-  const [togle, setTogle] = useState(style.footerPanel1);
+  //const [togle, setTogle] = useState(style.footerPanel1);
 
 // ! ------------------------------Web Socket---------------------------------------
   const [isPaused, setIsPaused] = useState(false);
