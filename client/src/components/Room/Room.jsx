@@ -4,47 +4,18 @@ import useWebRTC, { LOCAL_VIDEO } from '../../hooks/useWebRTC';
 import style from './style.module.css';
 
 
-function layout(clientsNumber = 1) {
-  const pairs = Array.from({length: clientsNumber})
-    .reduce((acc, next, index, arr) => {
-      if (index % 2 === 0) {
-        acc.push(arr.slice(index, index + 2));
-      }
-
-      return acc;
-    }, []);
-
-  const rowsNumber = pairs.length;
-  const height = `${100 / rowsNumber}%`;
-
-  return pairs.map((row, index, arr) => {
-
-    if (index === arr.length - 1 && row.length === 1) {
-      return [{
-        width: '100%',
-        height,
-      }];
-    }
-
-    return row.map(() => ({
-      width: '50%',
-      height,
-    }));
-  }).flat();
-}
 
 export default function Room() {
 
   const {id: roomID} = useParams();
   const {clients, provideMediaRef} = useWebRTC(roomID);
-  const videoLayout = layout(clients.length);
   console.log(clients);
 
   return (
     <div className={style.videoPerson}>
       {clients.map((clientID, index) => {
         return (
-          <div key={clientID} style={videoLayout[index]}>
+          <div key={clientID}>
             <video
             width='100%'
             height='100%'
@@ -57,5 +28,6 @@ export default function Room() {
         )
       })}
     </div>
+    
   )
 }

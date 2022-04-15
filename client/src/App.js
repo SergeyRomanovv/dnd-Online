@@ -28,7 +28,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Lobby />} />
-        <Route path="/game" element={<GamePage />} />
+        <Route path="/game/:id" element={<GamePage />} />
         <Route path="/builder" element={<Table/>} />
         <Route path="/register" element={<Registration/>} />
         <Route path="/login" element={<Login/>} />

@@ -52,15 +52,15 @@ export default function RollDice() {
       <div className={style.mainBox}>
         <div className={style.box}>
           <div className={style.diceBox}>
-            <img src='./images/dices/d4y1.png' />
+            <img src='../images/dices/d4y1.png' />
             <input onChange={changeHandler} value={inputs.d4 || ''} type='number' name='d4' min='0' max='12' />
           </div>
           <div className={style.diceBox}>
-            <img src='./images/dices/d6y1.png' />
+            <img src='../images/dices/d6y1.png' />
             <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
           </div>
           <div className={style.diceBox}>
-            <img src='./images/dices/d20y1.png' />
+            <img src='../images/dices/d20y1.png' />
             <input onChange={changeHandler} value={inputs.d20 || ''} type='number' name='d20' min='0' max='12' />
           </div>
         </div>
