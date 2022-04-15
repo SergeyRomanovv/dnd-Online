@@ -39,7 +39,7 @@ export default function GamePage() {
   }, [oneGame, isPaused]);
 // ? ------------------------------Web Socket---------------------------------------
   
-  const [togle, setTogle] = useState(style.footerPanel1);
+  const [togle, setTogle] = useState({view: style.footerPanel1, icon: 'fa-solid fa-chevron-down'});
   
   useEffect(() => {
     axios.get('http://localhost:3001/boards/all')
@@ -96,15 +96,15 @@ export default function GamePage() {
   }
 
   function togleHundler() {
-    if (togle === style.footerPanel) {
-      setTogle(style.footerPanel1)
+    if (togle.view === style.footerPanel) {
+      setTogle({view: style.footerPanel1, icon: 'fa-solid fa-chevron-down'})
       console.log(togle);
     } else {
-      setTogle(style.footerPanel)
+      setTogle({view: style.footerPanel, icon: 'fa-solid fa-chevron-up'})
     }
   }
 
-  console.log('*****************', oneGame);
+  console.log('*****************', togle);
 
   return (
     <>
@@ -134,8 +134,8 @@ export default function GamePage() {
         </div>
         <div className={style.rightSide}>right side</div>
       </div>
-      <div className={togle}>
-        <button onClick={togleHundler} className={style.gamePanelBtn}>Game Panel ︽</button>
+      <div className={togle.view}>
+        <button onClick={togleHundler} className={style.gamePanelBtn}><span className={style.iconText}>Game Panel</span> <i class={togle.icon}></i></button>
         <RollDice />
         <div className={style.attributies}>
           <img src="./images/items/Bonefire1.png" alt="./images/items/Bonefire1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
