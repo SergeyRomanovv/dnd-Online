@@ -26,8 +26,8 @@
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.18.0",
-    "uuid": "^8.3.2",
-    "ws": "^8.5.0"
+    "socket.io": "^4.4.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "sequelize-cli": "^6.4.1"
