@@ -66,28 +66,3 @@ io.on('connect', (socket) => {
     const user = lobbyService.removeUser(socket.id);
   });
 });
-// ! --------------------------------------web soket--------------------------------
-// const wsServer = new ws.WebSocketServer({
-//   server: httpServer,
-// });
-
-// const start = async () => {
-//   try {
-//     wsServer.on("connection", (clients) => {
-//       console.log(">>>> client connected. clients: ", wsServer.clients.size);
-//       clients.on("message", (message) => {
-//         const input = message.toString("utf-8");
-//         console.log(input);
-//         wsServer.clients.forEach((client)=>{
-//           client.send(input);
-//       });
-
-//       });
-//     });
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-
-// start();
-// ? --------------------------------------web soket--------------------------------

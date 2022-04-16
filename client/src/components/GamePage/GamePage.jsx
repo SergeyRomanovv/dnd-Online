@@ -134,8 +134,6 @@ export default function GamePage() {
     }
   }
 
-  console.log('*****************', togle);
-
   return (
     <>
       {/* <div className={style.topPanel}>top panel</div> */}
