@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Block, GameBoard, Category } = require('../db/models')
+const { Block, GameBoard, Category, User } = require('../db/models')
 
 router.get("/", async (req, res) => {
   try {
@@ -14,14 +14,12 @@ router.get("/", async (req, res) => {
 
 router.post('/save', async (req, res) => {
   try {
-    // console.log('from clienttttttttt', req.body);
-    const { board } = req.body;
-    const { title } = req.body.boardtitle;
-    // console.log(title);
+    const {board, boardTitle, userName} = req.body
+    console.log(req.body);
     const mapStringify = JSON.stringify(board)
-    const mapSave = await GameBoard.create({ board: mapStringify, title, user_id: 777 })
-    // const y = JSON.parse(x)
-    // console.log(mapSave)
+    const user = await User.findOne({where: {name: userName}, raw: true})
+    console.log(user)
+    const mapSave = await GameBoard.create({ board: mapStringify, title: boardTitle.title, user_id: user.id })
     res.sendStatus(200)
   } catch (err) {
     console.log(err);
