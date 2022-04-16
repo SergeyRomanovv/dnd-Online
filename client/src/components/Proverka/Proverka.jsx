@@ -44,50 +44,72 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import style from './style.module.css';
+import { useDispatch } from 'react-redux';
 
-export default function Proverka() {
+export default function Proverka({getImgSrcHundler}) {
 
-  const [categories, setCategories] = useState([]);
-  const [images, setImages ] = useState([]);
+  const [attrCategories, setAttrCategories] = useState([]);
+  const [attrImages, setAttrImages ] = useState([]);
+  const [attrImgToggle, setAttrImgToggle] = useState(style.attrPanelImages);
+  const [attrMasterTogle, setAttrMasterTogle] = useState({view: style.masterPanel1, icon: 'fa-solid fa-chevron-down'});
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get('http://localhost:3001/builder/categories')
       .then((res) => {
         // console.log(res.data)
-        setCategories(res.data);
+        setAttrCategories(res.data);
       })
   }, []);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/builder/images`)
       .then((res) => {
-        setImages(res.data);
+        setAttrImages(res.data);
       })
   }, []);
 
   const getImagesHundler = (id) => {
+    setAttrImgToggle(false)
     console.log(id);
     axios.post(`http://localhost:3001/builder/images/${id}`)
       .then((res) => {
-        console.log(res.data);
-        setImages(res.data);
+        // console.log(res.data);
+        setAttrImgToggle(style.attrPanelImages)
+        setAttrImages(res.data);
       })
   }
 
-  
-console.log('eeeeeeeeeeeeee', images);
+  const getSrcHundler = (e) => {
+    const imgSrc = e.target.alt;
+    // console.log('rrrrrrrrrrrrrrrrrrrrr', imgSrc);
+    dispatch({ type: 'GET_SRC', payload: imgSrc });
+  }
+
+  function attrTogleHundler() {
+    if (attrMasterTogle.view === style.masterPanel) {
+      setAttrMasterTogle({view: style.masterPanel1, icon: 'fa-solid fa-chevron-down'});
+    } else {
+      setAttrMasterTogle({view: style.masterPanel, icon: 'fa-solid fa-chevron-up'});
+    }
+  }
 
   return (
-    <div>
-      <div className={style.mainPanel}>
-        <div className={style.buttonsPanel}>
-          {categories.map(cat => <button id={cat.id} key={cat.id} onClick={() => getImagesHundler(cat.id)} >{cat.title}</button> )}
+    <div className={attrMasterTogle.view}>
+      <div>
+      <button onClick={attrTogleHundler} className={style.attrToggleBtn}><span className={style.attrIconText}>Builder Panel</span> <i class={attrMasterTogle.icon}></i></button>
+    </div>
+    <div className={style.attrPanel}>
+      <div className={style.attrMainPanel}>
+        <div className={style.attrButtonsPanel}>
+          {attrCategories.map(cat => <button id={cat.id} key={cat.id} onClick={() => getImagesHundler(cat.id)} >{cat.title}</button> )}
         </div>
-        <div className={style.imagesPanel}>
-          {images.map(pic => <img src={pic.url} alt={pic.url} /> )}
+        <div className={style.attrImagesPanel}>
+          {attrImgToggle ? attrImages.map(pic => <img className={attrImgToggle} src={pic.url} alt={pic.url} tabindex="0" onClick={getImgSrcHundler} /> ) : <div className={style.attrEmptyDiv}></div> }
         </div>
-        <p>cdsffsdfsdf</p>
       </div>
+    </div>
     </div>
   )
 }

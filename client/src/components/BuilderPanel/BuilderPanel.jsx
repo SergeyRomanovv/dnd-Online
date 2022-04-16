@@ -76,8 +76,6 @@ export default function BuilderPanel() {
         setImgToggle(style.panelImages)
         setImages(res.data);
       })
-      
-      
   }
 
   function togleHundler() {
