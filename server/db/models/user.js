@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     email: DataTypes.STRING,
     isActive: DataTypes.BOOLEAN,
+    isGameMaster: DataTypes.BOOLEAN,
     activationLink: DataTypes.STRING,
   }, {
     sequelize,

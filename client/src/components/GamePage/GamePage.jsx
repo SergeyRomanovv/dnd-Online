@@ -138,12 +138,23 @@ export default function GamePage() {
     <>
       {/* <div className={style.topPanel}>top panel</div> */}
       <div className={style.gamePage}>
-        <div className={style.leftSide}>
-          <div className={style.chooseBoard}>
-            <p>chosse board</p>
-            {allBoards.map((board) => <button key={board.id} onClick={() => getGameHundler(board.id)}>{board.title}</button>)}
+        {
+          localStorage.getItem("isGM") === 'true' ? 
+          (
+            <div className={style.leftSide}>
+            <div className={style.chooseBoard}>
+              <p>chosse board</p>
+              {allBoards.map((board) => <button key={board.id} onClick={() => getGameHundler(board.id)}>{board.title}</button>)}
+            </div>
           </div>
-        </div>
+          ) : (
+            <span>you are not GM</span>
+          )
+        }
+
+
+
+
         <div className={style.mainSide}>
           <div className={style.gameBox}>
             <table className={style.tableBox} onClick={(e) => masterHandler(e)} onDoubleClick={(e) => setTDHandler(e)}>
@@ -164,11 +175,18 @@ export default function GamePage() {
       </div>
       <div className={togle.view}>
         <button onClick={togleHundler} className={style.gamePanelBtn}><span className={style.iconText}>Game Panel</span> <i class={togle.icon}></i></button>
-        <RollDice />
+        <RollDice />        
         <div className={style.attributies}>
-          <img src="../images/items/Bonefire1.png" alt="../images/items/Bonefire1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-          <img src="../images/items/Elf2.png" alt="../images/items/Elf2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-          <img src="../images/items/Chest1.png" alt="../images/items/Chest1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/Items/Barrel_1.png" alt="../images/Items/Barrel_1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/Items/Box_1.png" alt="../images/Items/Box_1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/Items/Bush_1.png" alt="../images/Items/Bush_1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/Items/Bush_2.png" alt="../images/Items/Bush_2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/Items/Bush_3.png" alt="../images/Items/Bush_3.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/Items/Bush_4.png" alt="../images/Items/Bush_4.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+
+          <img src="../images/Enemies/Goblin_1.png" alt="../images/Enemies/Goblin_1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/Enemies/Goblin_2.png" alt="../images/Enemies/Goblin_2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
+          <img src="../images/Enemies/Skeleton_2.png" alt="../images/Enemies/Skeleton_2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
         </div>
       </div>
     </>
