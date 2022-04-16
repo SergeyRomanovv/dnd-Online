@@ -5,6 +5,7 @@ import axios from 'axios';
 import RollDice from '../RollDice/RollDice';
 import Room from '../Room/Room';
 import io from 'socket.io-client';
+import Proverka from '../Proverka/Proverka';
 let socket;
 
 export default function GamePage() {
@@ -174,9 +175,9 @@ export default function GamePage() {
         {/* <div className={style.rightSide}> <Room/> </div> */}
       </div>
       <div className={togle.view}>
-        <button onClick={togleHundler} className={style.gamePanelBtn}><span className={style.iconText}>Game Panel</span> <i class={togle.icon}></i></button>
+        {/* <button onClick={togleHundler} className={style.gamePanelBtn}><span className={style.iconText}>Game Panel</span> <i class={togle.icon}></i></button> */}
         <RollDice />        
-        <div className={style.attributies}>
+        {/* <div className={style.attributies}>
           <img src="../images/Items/Barrel_1.png" alt="../images/Items/Barrel_1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
           <img src="../images/Items/Box_1.png" alt="../images/Items/Box_1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
           <img src="../images/Items/Bush_1.png" alt="../images/Items/Bush_1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
@@ -187,7 +188,8 @@ export default function GamePage() {
           <img src="../images/Enemies/Goblin_1.png" alt="../images/Enemies/Goblin_1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
           <img src="../images/Enemies/Goblin_2.png" alt="../images/Enemies/Goblin_2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
           <img src="../images/Enemies/Skeleton_2.png" alt="../images/Enemies/Skeleton_2.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />
-        </div>
+        </div> */}
+        <Proverka getImgSrcHundler={getImgSrcHundler} />
       </div>
     </>
   )
