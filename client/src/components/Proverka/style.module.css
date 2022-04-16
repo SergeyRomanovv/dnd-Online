@@ -1,0 +1,18 @@
+.mainBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.imagesPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  overflow-x: scroll;
+}
+
+.imagesPanel img {
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+}
