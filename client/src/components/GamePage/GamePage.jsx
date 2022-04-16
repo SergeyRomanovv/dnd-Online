@@ -74,7 +74,9 @@ export default function GamePage() {
   // ? ---------------------------Soket IO------------------------------------------
 
   useEffect(() => {
-    axios.get('http://localhost:3001/boards/all')
+    const userName = localStorage.getItem('userName')
+    console.log('LocalStorage User ===>', userName)
+    axios.post('http://localhost:3001/boards/all', {userName})
       .then((boardsFromServer) => {
         // console.log(boardsFromServer.data);
         setAllBoards(boardsFromServer.data);

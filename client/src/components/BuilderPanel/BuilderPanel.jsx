@@ -53,7 +53,8 @@ export default function BuilderPanel() {
 
   const saveHandler = async () => {
     if (boardtitle.title) {
-      const response = await axios.post('http://localhost:3001/builder/save', { board: gameMap, boardtitle });
+      const userName = localStorage.getItem('userName')
+      const response = await axios.post('http://localhost:3001/builder/save', { board: gameMap, boardTitle: boardtitle, userName: userName});
       dispatch({ type: 'DEL_BOARD_TITLE', payload: {} });
       navigate('/');
     } else {

@@ -1,9 +1,11 @@
 const router = require("express").Router();
-const { Block, GameBoard } = require('../db/models');
+const { Block, GameBoard, User } = require('../db/models');
 
-router.get('/all', async (req, res) => {
+router.post('/all', async (req, res) => {
   try {
-    const allBoardss = await GameBoard.findAll({ raw: true });
+    const { userName } = req.body
+    const user = await User.findOne({where: {name: userName}, raw: true});
+    const allBoardss = await GameBoard.findAll({where: {user_id: user.id}});
     res.json(allBoardss);
   } catch (err) {
     console.log(err);

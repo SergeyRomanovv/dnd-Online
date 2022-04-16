@@ -6,6 +6,7 @@ function Lobby() {
   const name = useSelector((store) => store.user);
   const [room, setRoom] = useState("");
 
+  localStorage.setItem('userName', name)
   return (
     <>
       <h1 className="login-h1">Войдите в комнату</h1>
