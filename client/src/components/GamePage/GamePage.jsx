@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.css';
 import axios from 'axios';
@@ -72,30 +72,6 @@ export default function GamePage() {
 
 
   // ? ---------------------------Soket IO------------------------------------------
-
-  // ! ------------------------------Web Socket---------------------------------------
-  // const [isPaused, setIsPaused] = useState(false);
-  // const [response, setResponse] = useState("");
-  // const ws = useRef();
-
-  // useEffect(() => {
-  //   if (!isPaused) {
-  //     ws.current = new WebSocket("ws://localhost:3001/");
-  //     ws.current.onopen = () => {
-  //       console.log("Socket подключен");
-  //     };
-  //   }
-  //   setTimeout(() => {
-  //     ws.current.send(JSON.stringify(oneGame));
-  //   }, 0);
-
-  //   ws.current.onmessage = (event) => {
-  //     setResponse(JSON.parse(event.data));
-  //   };
-
-  //   setIsPaused(true);
-  // }, [oneGame, isPaused]);
-  // ? ------------------------------Web Socket---------------------------------------
 
 
   useEffect(() => {
