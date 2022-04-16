@@ -4,43 +4,100 @@ import style from './style.module.css';
 import axios from 'axios';
 import RollDice from '../RollDice/RollDice';
 import Room from '../Room/Room';
+import io from 'socket.io-client';
+let socket;
 
 export default function GamePage() {
   const oneGame = useSelector(state => state.oneGame);
 
   const dispatch = useDispatch();
   const [allBoards, setAllBoards] = useState([]);
-  const [oneGameBoard, setOneGameBoard] = useState([]);
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
   const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
   const [togle, setTogle] = useState(style.footerPanel1);
 
-// ! ------------------------------Web Socket---------------------------------------
-  const [isPaused, setIsPaused] = useState(false);
-  const [response, setResponse] = useState("");
-  const ws = useRef();
+  // ! ---------------------------Soket IO------------------------------------------
+  const [user, setUser] = useState("");
+  const [room, setRoom] = useState("");
+  const [users, setUsers] = useState([]);
+  const [renderMap, setRenderMap] = useState([]);
+  const socketUrl = 'http://localhost:3001';
 
   useEffect(() => {
-    if (!isPaused) {
-      ws.current = new WebSocket("ws://localhost:3001/");
-      ws.current.onopen = () => {
-        console.log("Socket подключен");
-      };
-    }
-    setTimeout(() => {
-      ws.current.send(JSON.stringify(oneGame));
-    }, 0);
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const urlParamUser = params.get('name');
+    const urlParamRoom = params.get('room');
 
-    ws.current.onmessage = (event) => {
-      setResponse(JSON.parse(event.data));
+    setUser(urlParamUser);
+    setRoom(urlParamRoom);
+
+
+    socket = io(socketUrl);
+
+
+
+    socket.emit('join', { urlParamUser, urlParamRoom }, (err) => {
+      if (err) {
+        console.error(err);
+      }
+    });
+
+    return () => {
+      // User leaves room
+      socket.disconnect();
+
+      socket.off();
     };
 
-    setIsPaused(true);
-  }, [oneGame, isPaused]);
-// ? ------------------------------Web Socket---------------------------------------
-  
-  
+  }, [socketUrl, window.location.search]);
+
+  useEffect(() => {
+    socket.emit('sendMapToServer', oneGame);
+  }, [oneGame]);
+
+  useEffect(() => {
+    socket.on('sendMapFromServer', data => {
+      console.log('map' ,data);
+      setRenderMap(data.map);
+      console.log('oneGame FRONT', oneGame);
+    });
+
+    socket.on('roomMembers', usrs => {
+      console.log('usrs', usrs);
+      setUsers(usrs);
+    });
+  }, [oneGame]);
+
+
+  // ? ---------------------------Soket IO------------------------------------------
+
+  // ! ------------------------------Web Socket---------------------------------------
+  // const [isPaused, setIsPaused] = useState(false);
+  // const [response, setResponse] = useState("");
+  // const ws = useRef();
+
+  // useEffect(() => {
+  //   if (!isPaused) {
+  //     ws.current = new WebSocket("ws://localhost:3001/");
+  //     ws.current.onopen = () => {
+  //       console.log("Socket подключен");
+  //     };
+  //   }
+  //   setTimeout(() => {
+  //     ws.current.send(JSON.stringify(oneGame));
+  //   }, 0);
+
+  //   ws.current.onmessage = (event) => {
+  //     setResponse(JSON.parse(event.data));
+  //   };
+
+  //   setIsPaused(true);
+  // }, [oneGame, isPaused]);
+  // ? ------------------------------Web Socket---------------------------------------
+
+
   useEffect(() => {
     axios.get('http://localhost:3001/boards/all')
       .then((boardsFromServer) => {
@@ -50,7 +107,6 @@ export default function GamePage() {
   }, []);
 
   const getGameHundler = (id) => {
-    console.log(id);
     const game = JSON.parse(allBoards.filter(el => el.id === id)[0].board);
     dispatch({ type: 'SET_ONE_GAME', payload: game });
     // setOneGameBoard(game)
@@ -61,7 +117,6 @@ export default function GamePage() {
     const x = e.target.parentNode.rowIndex;
     const y = e.target.cellIndex;
     setGameBoardCoordinates({ x, y });
-    console.log('xy', x, y, imgSrc);
     dispatch({ type: 'SET_ATTR', payload: { x, y, imgSrc } });
   }
 
@@ -97,14 +152,12 @@ export default function GamePage() {
 
   function togleHundler() {
     if (togle === style.footerPanel) {
-      setTogle(style.footerPanel1)
-      console.log(togle);
+      setTogle(style.footerPanel1);
     } else {
-      setTogle(style.footerPanel)
+      setTogle(style.footerPanel);
     }
   }
 
-  console.log('*****************', oneGame);
 
   return (
     <>
@@ -121,8 +174,8 @@ export default function GamePage() {
             <table className={style.tableBox} onClick={(e) => masterHandler(e)} onDoubleClick={(e) => setTDHandler(e)}>
               <thead></thead>
               <tbody>
-                {response.length ?
-                  response.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
+                {renderMap.length ?
+                  renderMap.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
                     ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} />
                     : <span></span>}</td>)}</tr>)
                   : <span>Chosse a game from left side</span>
@@ -132,10 +185,10 @@ export default function GamePage() {
             </table>
           </div>
         </div>
-        <div className={style.rightSide}> <Room/> </div>
+        {/* <div className={style.rightSide}> <Room/> </div> */}
       </div>
       <div className={togle}>
-        <button onClick={togleHundler} className={style.gamePanelBtn}>Game Panel <img src="../images/icons/chevron-down.svg"/></button>
+        <button onClick={togleHundler} className={style.gamePanelBtn}>Game Panel <img src="../images/icons/chevron-down.svg" /></button>
         <RollDice />
         <div className={style.attributies}>
           <img src="../images/items/Bonefire1.png" alt="../images/items/Bonefire1.png" tabindex="0" style={{ width: '60px' }} onClick={getImgSrcHundler} />

@@ -26,6 +26,7 @@ export const submitLogout = () => async(dispatch) =>{
 export const checkAuth = () => async (dispatch) => {
   try {
     const response = await axios.get(`http://localhost:3001/auth/refresh`, {withCredentials: true});
+    // localStorage.setItem('userName', response.data.accessToken);
     localStorage.setItem('token', response.data.accessToken);
     dispatch(setUser(response.data.user.userName));
   } catch (err) {
