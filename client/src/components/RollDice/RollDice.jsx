@@ -45,20 +45,20 @@ export default function RollDice() {
   };
 
 
-  function attrTogleHundler() {
-    if (attrMasterTogle.view === style.masterPanel) {
-      setAttrMasterTogle({ view: style.masterPanel1, icon: 'fa-solid fa-chevron-down' });
-    } else {
-      setAttrMasterTogle({ view: style.masterPanel, icon: 'fa-solid fa-chevron-up' });
-    }
-  }
+  // function attrTogleHundler() {
+  //   if (attrMasterTogle.view === style.masterPanel) {
+  //     setAttrMasterTogle({ view: style.masterPanel1, icon: 'fa-solid fa-chevron-down' });
+  //   } else {
+  //     setAttrMasterTogle({ view: style.masterPanel, icon: 'fa-solid fa-chevron-up' });
+  //   }
+  // }
 
 
 
   return (
     <>
       <div className={attrMasterTogle.view}>
-
+</div>
         
       
       {/* <div><button onClick={attrTogleHundler} className={style.attrToggleBtn}><span className={style.attrIconText}>Builder Panel</span> <i class={attrMasterTogle.icon}></i></button></div> */}
@@ -71,10 +71,10 @@ export default function RollDice() {
           <div className={style.diceBox}>
             <img src='../images/dices/d6y1.png' alt='dice6' />
             <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
-            <div className={style.diceBox}>
+          </div>
+          <div className={style.diceBox}>
               <img src='../images/dices/d20y1.png' alt='dice20' />
               <input onChange={changeHandler} value={inputs.d20 || ''} type='number' name='d20' min='0' max='12' />
-            </div>
           </div>
           <div className={style.resultBox}>
             <button onClick={diceHandler} >Roll</button>
