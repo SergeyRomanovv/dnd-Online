@@ -5,7 +5,9 @@ import axios from 'axios';
 import RollDice from '../RollDice/RollDice';
 import Room from '../Room/Room';
 import io from 'socket.io-client';
-import Proverka from '../Proverka/Proverka';
+// import Proverka from '../Proverka/Proverka';
+import AttrPanel from '../AttrPanel/AttrPanel';
+import GameMasterPanel from '../GameMasterPanel/GameMasterPanel';
 let socket;
 
 export default function GamePage() {
@@ -188,11 +190,11 @@ export default function GamePage() {
         <Room/>
         </div>
       </div>
-      <div className={togle.view}>
-        {/* <button onClick={togleHundler} className={style.gamePanelBtn}><span className={style.iconText}>Game Panel</span> <i class={togle.icon}></i></button> */}
-        <RollDice />        
-        <Proverka getImgSrcHundler={getImgSrcHundler} />
-      </div>
+      {
+        localStorage.getItem("isGM") === 'true' ?
+        <GameMasterPanel getImgSrcHundler={getImgSrcHundler}/> :
+        <RollDice /> 
+      }
     </>
   )
 }

@@ -12,6 +12,7 @@ const boardsRouter = require("./routes/boardsRouter");
 const errormiddleware = require("./middlewares/error-middleware");
 const dbConnectCheck = require("./db/dbConnectCheck");
 const lobbyService = require("./service/lobby-service");
+const attributesRouter = require('./routes/attributesRouter');
 
 // Импортируем созданный в отдельный файлах рутеры.
 const app = express();
@@ -32,6 +33,7 @@ app.use("/", mainRouter);
 app.use("/auth", authRouter);
 app.use("/builder", builderRouter);
 app.use("/boards", boardsRouter);
+app.use('/attributies', attributesRouter);
 
 app.use(errormiddleware);
 

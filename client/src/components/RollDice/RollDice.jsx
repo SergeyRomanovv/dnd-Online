@@ -59,18 +59,18 @@ export default function RollDice() {
     <>
       <div className={attrMasterTogle.view}>
 
-
-        <div><button onClick={attrTogleHundler} className={style.attrToggleBtn}><span className={style.attrIconText}>Builder Panel</span> <i class={attrMasterTogle.icon}></i></button></div>
-        <div className={style.mainBox}>
-          <div className={style.box}>
-            <div className={style.diceBox}>
-              <img src='../images/dices/d4y1.png' alt='dice4' />
-              <input onChange={changeHandler} value={inputs.d4 || ''} type='number' name='d4' min='0' max='12' />
-            </div>
-            <div className={style.diceBox}>
-              <img src='../images/dices/d6y1.png' alt='dice6' />
-              <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
-            </div>
+        
+      
+      {/* <div><button onClick={attrTogleHundler} className={style.attrToggleBtn}><span className={style.attrIconText}>Builder Panel</span> <i class={attrMasterTogle.icon}></i></button></div> */}
+      <div className={style.mainBox}>
+        <div className={style.box}>
+          <div className={style.diceBox}>
+            <img src='../images/dices/d4y1.png' alt='dice4' />
+            <input onChange={changeHandler} value={inputs.d4 || ''} type='number' name='d4' min='0' max='12' />
+          </div>
+          <div className={style.diceBox}>
+            <img src='../images/dices/d6y1.png' alt='dice6' />
+            <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
             <div className={style.diceBox}>
               <img src='../images/dices/d20y1.png' alt='dice20' />
               <input onChange={changeHandler} value={inputs.d20 || ''} type='number' name='d20' min='0' max='12' />
