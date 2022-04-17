@@ -174,7 +174,7 @@ export default function GamePage() {
             </table>
           </div>
         </div>
-        {/* <div className={style.rightSide}> <Room/> </div> */}
+        <div className={style.rightSide}> <Room/> </div>
       </div>
       <div className={togle.view}>
         {/* <button onClick={togleHundler} className={style.gamePanelBtn}><span className={style.iconText}>Game Panel</span> <i class={togle.icon}></i></button> */}
