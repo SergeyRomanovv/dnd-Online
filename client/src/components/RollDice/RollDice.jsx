@@ -57,11 +57,6 @@ export default function RollDice() {
 
   return (
     <>
-      <div className={attrMasterTogle.view}>
-</div>
-        
-      
-      {/* <div><button onClick={attrTogleHundler} className={style.attrToggleBtn}><span className={style.attrIconText}>Builder Panel</span> <i class={attrMasterTogle.icon}></i></button></div> */}
       <div className={style.mainBox}>
         <div className={style.box}>
           <div className={style.diceBox}>
