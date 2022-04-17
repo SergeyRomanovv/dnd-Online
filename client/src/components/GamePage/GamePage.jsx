@@ -60,9 +60,7 @@ export default function GamePage() {
 
   useEffect(() => {
     socket.on('sendMapFromServer', data => {
-      console.log('map' ,data);
       setRenderMap(data.map);
-      console.log('oneGame FRONT', oneGame);
     });
 
     socket.on('roomMembers', usrs => {
