@@ -1,9 +1,13 @@
 .videoPerson {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
+  align-items: flex-end;
 }
 
 .videoBox {
   display: flex;
+  width: 95%;
+  border: 3px solid rgb(14, 237, 2);
+  margin-bottom: 8px;
 }

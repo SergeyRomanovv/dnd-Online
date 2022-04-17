@@ -14,14 +14,14 @@
 .mainSide {
   /* border: 1px solid black; */
   min-height: 100vh;
-  width: 70%;
+  width: 77%;
   text-align: center;
 }
 
 .rightSide {
   /* border: 1px solid black; */
   min-height: 100vh;
-  width: 20%;
+  width: 13%;
 }
 
 .topPanel {
