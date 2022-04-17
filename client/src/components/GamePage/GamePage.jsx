@@ -8,6 +8,7 @@ import io from 'socket.io-client';
 // import Proverka from '../Proverka/Proverka';
 import AttrPanel from '../AttrPanel/AttrPanel';
 import GameMasterPanel from '../GameMasterPanel/GameMasterPanel';
+import PlayerPanel from '../PlayerPanel/PlayerPanel';
 let socket;
 
 export default function GamePage() {
@@ -193,7 +194,7 @@ export default function GamePage() {
       {
         localStorage.getItem("isGM") === 'true' ?
         <GameMasterPanel getImgSrcHundler={getImgSrcHundler}/> :
-        <RollDice /> 
+        <PlayerPanel />
       }
     </>
   )

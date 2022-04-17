@@ -51,7 +51,7 @@ export default function Table() {
       for (let i = 0; i < row; i++ ) {
         let oneRow = [];
         for (let j = 0; j < coll; j++) {
-          oneRow.push({ id: tdId, bgImg: './images/Sand_1.jpg'});
+          oneRow.push({ id: tdId, bgImg: '../images/Sand_1.jpg'});
           tdId++;
         }
         table.push(oneRow);
@@ -69,7 +69,7 @@ export default function Table() {
       for (let i = 0; i < row; i++ ) {
         let oneRow = [];
         for (let j = 0; j < coll; j++) {
-          const num = Math.floor(Math.random() * blockItems.length);
+          const num = Math.floor(Math.random() * 6);
           oneRow.push({ id: tdId, bgImg: blockItems[num].url});
           tdId++;
         }
@@ -78,7 +78,7 @@ export default function Table() {
       dispatch({ type: 'GENERATE_BOARD', payload: table})
     }
 
-    console.log('ttttttttttttttt', gameMap);
+    console.log('block items', blockItems);
 
   return (
     <div className={style.mainBox}>
