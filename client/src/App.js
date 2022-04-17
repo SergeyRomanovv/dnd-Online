@@ -13,6 +13,7 @@ import RollDice from "./components/RollDice/RollDice";
 import VideoChat from "./components/Videochat/VideoChat";
 import Room from "./components/Room/Room";
 import Proverka from './components/Proverka/Proverka';
+import GameMasterPanel from "./components/GameMasterPanel/GameMasterPanel";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/video" element={<VideoChat/>} />
         <Route path="/room/:id" element={<Room/>} />
         <Route path="/proverka" element={<Proverka />} />
+        <Route path="/gmpanel" element={<GameMasterPanel />} />
       </Routes>
     </>
   );

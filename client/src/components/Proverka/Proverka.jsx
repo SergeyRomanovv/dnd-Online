@@ -51,7 +51,7 @@ export default function Proverka({getImgSrcHundler}) {
   const [attrCategories, setAttrCategories] = useState([]);
   const [attrImages, setAttrImages ] = useState([]);
   const [attrImgToggle, setAttrImgToggle] = useState(style.attrPanelImages);
-  const [attrMasterTogle, setAttrMasterTogle] = useState({view: style.masterPanel1, icon: 'fa-solid fa-chevron-down'});
+  // const [attrMasterTogle, setAttrMasterTogle] = useState({view: style.masterPanel1, icon: 'fa-solid fa-chevron-down'});
 
   const dispatch = useDispatch();
 
@@ -87,26 +87,26 @@ export default function Proverka({getImgSrcHundler}) {
     dispatch({ type: 'GET_SRC', payload: imgSrc });
   }
 
-  function attrTogleHundler() {
-    if (attrMasterTogle.view === style.masterPanel) {
-      setAttrMasterTogle({view: style.masterPanel1, icon: 'fa-solid fa-chevron-down'});
-    } else {
-      setAttrMasterTogle({view: style.masterPanel, icon: 'fa-solid fa-chevron-up'});
-    }
-  }
+  // function attrTogleHundler() {
+  //   if (attrMasterTogle.view === style.masterPanel) {
+  //     setAttrMasterTogle({view: style.masterPanel1, icon: 'fa-solid fa-chevron-down'});
+  //   } else {
+  //     setAttrMasterTogle({view: style.masterPanel, icon: 'fa-solid fa-chevron-up'});
+  //   }
+  // }
 
   return (
-    <div className={attrMasterTogle.view}>
-      <div>
+    <div className={style.proverkaPanel}>
+      {/* <div>
       <button onClick={attrTogleHundler} className={style.attrToggleBtn}><span className={style.attrIconText}>Builder Panel</span> <i class={attrMasterTogle.icon}></i></button>
-    </div>
+    </div> */}
     <div className={style.attrPanel}>
       <div className={style.attrMainPanel}>
         <div className={style.attrButtonsPanel}>
           {attrCategories.map(cat => <button id={cat.id} key={cat.id} onClick={() => getImagesHundler(cat.id)} >{cat.title}</button> )}
         </div>
         <div className={style.attrImagesPanel}>
-          {attrImgToggle ? attrImages.map(pic => <img className={attrImgToggle} src={pic.url} alt={pic.url} tabindex="0" onClick={getImgSrcHundler} /> ) : <div className={style.attrEmptyDiv}></div> }
+          {attrImgToggle ? attrImages.map(pic => <img className={attrImgToggle} src={pic.url} alt={pic.url} tabindex="0" /> ) : <div className={style.attrEmptyDiv}></div> }
         </div>
       </div>
     </div>

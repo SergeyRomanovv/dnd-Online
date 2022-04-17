@@ -11,18 +11,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
   animation-name: example;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-  z-index: 1;
+  z-index: 1; */
 }
 
-@keyframes example {
+/* @keyframes example {
   0%   {bottom:0px;}
   100% {bottom:-170px;}
-}
+} */
 
 .masterPanel1 {
   width: 100%;
@@ -30,18 +30,18 @@
   background-color: rgb(62, 62, 109);
   flex-direction: column;
   justify-content: space-around;
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
   animation-name: example1;
   animation-duration: 1s;
   animation-fill-mode: forwards;
-  z-index: -1;
+  z-index: -1; */
 }
 
-@keyframes example1 {
+/* @keyframes example1 {
   0%   {bottom:-170px;}
   100% {bottom:-0px;}
-}
+} */
 
 .attrToggleBtn {
   width: 10%;

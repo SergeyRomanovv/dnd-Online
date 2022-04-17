@@ -1,5 +1,5 @@
 .attrPanel {
-  background-color: rgb(18, 235, 235);
+  background-color: rgb(121, 143, 143);
   width: 100%;
   padding: 20px;
   display: flex;
@@ -20,6 +20,7 @@
 
 .attrToggleBtn {
   width: 10%;
+  margin-left: 10%;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -61,7 +62,7 @@
   margin: 10px;
   position: relative;
   animation-name: example2;
-  animation-duration: 0.8s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -85,7 +86,7 @@
 }
 
 /* toogle */
-.proverkaPanel {
+.masterPanel {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -99,12 +100,12 @@
   z-index: 1; */
 }
 
-@keyframes example {
+/* @keyframes example {
   0%   {bottom:0px;}
   100% {bottom:-172px;}
-}
+} */
 
-.masterPanel1 {
+.mainBox {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -118,7 +119,7 @@
   z-index: -1; */
 }
 
-@keyframes example1 {
+/* @keyframes example1 {
   0%   {bottom:-172px;}
   100% {bottom:-0px;}
-}
+} */
