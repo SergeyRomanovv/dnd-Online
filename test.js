@@ -1,2 +1,2 @@
-let q = '      qqqq        ';
-console.log(q.trim());
+let q = {ket: 'erwqrwer'};
+console.log(q.length);

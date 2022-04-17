@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import style from './style.module.css';
 
+
 export default function RollDice() {
+  const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
   const [dices, setDices] = useState({});
+
   const [attrMasterTogle, setAttrMasterTogle] = useState({ view: style.masterPanel1, icon: 'fa-solid fa-chevron-down' });
-  console.log('dices', dices);
+
   const changeHandler = (e) => {
     if (e.target.value < 0) e.target.value = 0;
     if (e.target.value > 12) e.target.value = 12;
@@ -35,8 +39,8 @@ export default function RollDice() {
         sumd20.push(random(20));
       }
     }
-
-    setDices((prev) => ({ ...prev, d4: sumd4, d6: sumd6, d20: sumd20 }));
+    dispatch({ type: 'ROLL_DICE', payload: { d4: sumd4, d6: sumd6, d20: sumd20 } });
+    // setDices((prev) => ({ ...prev, d4: sumd4, d6: sumd6, d20: sumd20 }));
     setInputs({});
   };
 

@@ -15,5 +15,6 @@ const initState = {
   tempImg: '',
   boardtitle: {},
   oneGame: [],
+  rollDice: {},
 };
 export default initState;
