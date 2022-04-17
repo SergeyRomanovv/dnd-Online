@@ -58,29 +58,26 @@ export default function RollDice() {
   return (
     <>
       <div className={attrMasterTogle.view}>
-
-        
-      
-      {/* <div><button onClick={attrTogleHundler} className={style.attrToggleBtn}><span className={style.attrIconText}>Builder Panel</span> <i class={attrMasterTogle.icon}></i></button></div> */}
-      <div className={style.mainBox}>
-        <div className={style.box}>
-          <div className={style.diceBox}>
-            <img src='../images/dices/d4y1.png' alt='dice4' />
-            <input onChange={changeHandler} value={inputs.d4 || ''} type='number' name='d4' min='0' max='12' />
-          </div>
-          <div className={style.diceBox}>
-            <img src='../images/dices/d6y1.png' alt='dice6' />
-            <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
+        <div className={style.mainBox}>
+          <div className={style.box}>
             <div className={style.diceBox}>
-              <img src='../images/dices/d20y1.png' alt='dice20' />
-              <input onChange={changeHandler} value={inputs.d20 || ''} type='number' name='d20' min='0' max='12' />
+              <img src='../images/dices/d4y1.png' alt='dice4' />
+              <input onChange={changeHandler} value={inputs.d4 || ''} type='number' name='d4' min='0' max='12' />
             </div>
-          </div>
-          <div className={style.resultBox}>
-            <button onClick={diceHandler} >Roll</button>
-            {dices.d4?.length > 0 ? <div>D4: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {dices.d6?.length > 0 ? <div>D6: {dices.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {dices.d20?.length > 0 ? <div>D20: {dices.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            <div className={style.diceBox}>
+              <img src='../images/dices/d6y1.png' alt='dice6' />
+              <input onChange={changeHandler} value={inputs.d6 || ''} type='number' name='d6' min='0' max='12' />
+              <div className={style.diceBox}>
+                <img src='../images/dices/d20y1.png' alt='dice20' />
+                <input onChange={changeHandler} value={inputs.d20 || ''} type='number' name='d20' min='0' max='12' />
+              </div>
+            </div>
+            <div className={style.resultBox}>
+              <button onClick={diceHandler} >Roll</button>
+              {dices.d4?.length > 0 ? <div>D4: {dices.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+              {dices.d6?.length > 0 ? <div>D6: {dices.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+              {dices.d20?.length > 0 ? <div>D20: {dices.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            </div>
           </div>
         </div>
       </div>
