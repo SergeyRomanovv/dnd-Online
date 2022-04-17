@@ -58,9 +58,15 @@ io.on('connect', (socket) => {
   });
 
   socket.on('sendMapToServer', (data) => {
-    console.log('sendMapToServer', data);
     const user = lobbyService.getUser(socket.id);
-    io.to(user.room).emit('sendMapFromServer', { user: user.user, map: data });
+    io.to(user.room).emit('sendMapFromServer', { user: user.user, map: data.oneGame});
+  });
+
+  socket.on('sendRollToServer', (data) => {
+    const user = lobbyService.getUser(socket.id);
+      if (Object.keys(data.rollState).length !== 0) {
+      io.to(user.room).emit('sendRollFromServer', { user: user.user, roll: data.rollState });
+    }
   });
 
   socket.on('disconnect',() => {

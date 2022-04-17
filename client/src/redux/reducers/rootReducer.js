@@ -6,6 +6,7 @@ import gameMapEdReducer from './gameMapEdReducer';
 import builderReducer from './builderReducer';
 import boardTitleReducer from './boardTitleReducer';
 import oneGameReducer from './oneGameReducer';
+import RollDiceReducer from './RollDiceReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   tempImg: builderReducer,
   boardtitle: boardTitleReducer,
   oneGame: oneGameReducer,
+  rollDice: RollDiceReducer,
 });
 
 export default rootReducer;

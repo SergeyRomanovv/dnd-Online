@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { checkAuth } from './redux/action/authAC';
 import GamePage from "./components/GamePage/GamePage";
-import RollDice from "./components/RollDice/RollDice";
 import VideoChat from "./components/Videochat/VideoChat";
 import Room from "./components/Room/Room";
 import Proverka from './components/Proverka/Proverka';

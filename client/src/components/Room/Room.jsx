@@ -9,14 +9,13 @@ export default function Room() {
 
   const {id: roomID} = useParams();
   const {clients, provideMediaRef} = useWebRTC(roomID);
-  console.log(clients);
 
   return (
     <div className={style.videoPerson}>
       {clients.map((clientID, index) => {
         return (
           <div key={clientID}>
-            <video
+            <video key={index}
             width='100%'
             height='100%'
             ref={(instance) => provideMediaRef(clientID, instance)}

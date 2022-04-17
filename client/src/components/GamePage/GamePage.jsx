@@ -12,7 +12,7 @@ let socket;
 
 export default function GamePage() {
   const oneGame = useSelector(state => state.oneGame);
-
+  const rollState = useSelector((store) => store.rollDice);
   const dispatch = useDispatch();
   const [allBoards, setAllBoards] = useState([]);
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
@@ -25,6 +25,7 @@ export default function GamePage() {
   const [room, setRoom] = useState("");
   const [users, setUsers] = useState([]);
   const [renderMap, setRenderMap] = useState([]);
+  const [rollResult, setRollResult] = useState({});
   const socketUrl = 'http://localhost:3001';
 
   useEffect(() => {
@@ -57,31 +58,37 @@ export default function GamePage() {
   }, [socketUrl, window.location.search]);
 
   useEffect(() => {
-    socket.emit('sendMapToServer', oneGame);
+    socket.emit('sendMapToServer', {oneGame});
   }, [oneGame]);
 
   useEffect(() => {
+    socket.emit('sendRollToServer', {rollState});
+  }, [rollState]);
+
+  useEffect(() => {
     socket.on('sendMapFromServer', data => {
-      // console.log('map' ,data);
       setRenderMap(data.map);
-      console.log('oneGame FRONT', oneGame);
     });
 
     socket.on('roomMembers', usrs => {
-      console.log('usrs', usrs);
       setUsers(usrs);
     });
+  
   }, [oneGame]);
 
+  useEffect(() => {
+    socket.on('sendRollFromServer', data => {
+      setRollResult(data);
+      console.log(rollResult);
+    });
+  }, [rollState]);
 
   // ? ---------------------------Soket IO------------------------------------------
 
   useEffect(() => {
     const userName = localStorage.getItem('userName')
-    console.log('LocalStorage User ===>', userName)
     axios.post('http://localhost:3001/boards/all', {userName})
       .then((boardsFromServer) => {
-        // console.log(boardsFromServer.data);
         setAllBoards(boardsFromServer.data);
       });
   }, []);
@@ -105,7 +112,6 @@ export default function GamePage() {
       const x = e.target.parentNode.parentNode.rowIndex;
       const y = e.target.parentNode.cellIndex;
       setGameBoardCoordinates({ x, y });
-      // console.log('doubleclick x y', x, y, imgSrc);
       dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
     } else if (e.shiftKey) {
       const x = e.target.parentNode.parentNode.rowIndex;
@@ -119,7 +125,6 @@ export default function GamePage() {
       const yy = e.target.cellIndex;
       const setObj = { x: xx, y: yy, imgSrc };
       const delObj = { x, y, imgSrc: '' };
-      // console.log('set', setObj, 'del', delObj);
       dispatch({ type: 'DEL_ATTR', payload: delObj });
       dispatch({ type: 'SET_ATTR', payload: setObj });
       setMoveAttr({});
@@ -133,7 +138,6 @@ export default function GamePage() {
   function togleHundler() {
     if (togle.view === style.footerPanel) {
       setTogle({view: style.footerPanel1, icon: 'fa-solid fa-chevron-down'})
-      console.log(togle);
     } else {
       setTogle({view: style.footerPanel, icon: 'fa-solid fa-chevron-up'})
     }
@@ -176,7 +180,15 @@ export default function GamePage() {
             </table>
           </div>
         </div>
-        {/* <div className={style.rightSide}> <Room/> </div> */}
+        <div className={style.rightSide}> 
+        {<div> 
+            {rollResult.user}
+            {rollResult.roll?.d4?.length > 0 ? <div>D4: {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d6?.length > 0 ? <div>D6: {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d20?.length > 0 ? <div>D20: {rollResult.roll.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+         </div>} 
+        <Room/>
+        </div>
       </div>
       {
         localStorage.getItem("isGM") === 'true' ?
