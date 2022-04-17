@@ -1,5 +1,5 @@
 .mainBox {
-  background-color: #8E806A !important;
+  background: linear-gradient(90deg, #C69B7B, #826F66);
   /* background-image: linear-gradient(90deg, #091a19c0 0%, #17274da7 100%) !important; */
   box-shadow: none !important;
 }

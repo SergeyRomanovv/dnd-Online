@@ -1,7 +1,9 @@
 .videoPerson {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  height: 100vh;
+  flex-direction: column;
+  width: 90%;
+}
+
+.videoBox {
+  display: flex;
 }

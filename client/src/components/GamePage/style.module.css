@@ -6,22 +6,22 @@
 }
 
 .leftSide {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   min-height: 100vh;
   width: 10%;
 }
 
 .mainSide {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   min-height: 100vh;
-  width: 80%;
+  width: 70%;
   text-align: center;
 }
 
 .rightSide {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   min-height: 100vh;
-  width: 10%;
+  width: 20%;
 }
 
 .topPanel {
@@ -114,7 +114,19 @@
   padding: 5px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-around;
+}
+
+.chooseBoard button {
+  padding: 5px;
+  color: #fff;
+  width: 80%;
+  margin: 8px 0px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #2e2724 20%, #55473b);
+  cursor: pointer;
 }
 
 .gameBox {
@@ -126,6 +138,9 @@
 
 .tableBox {
   border-collapse: collapse;
+  -webkit-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+  box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
 }
 
 .tableBox td {
