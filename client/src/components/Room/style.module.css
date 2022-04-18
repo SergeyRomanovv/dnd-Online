@@ -8,6 +8,9 @@
 .videoBox {
   display: flex;
   width: 95%;
-  border: 3px solid rgb(14, 237, 2);
   margin-bottom: 8px;
+}
+
+.videoBox video {
+  border-radius: 12px;
 }

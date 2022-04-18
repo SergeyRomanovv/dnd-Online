@@ -13,6 +13,7 @@ const errormiddleware = require("./middlewares/error-middleware");
 const dbConnectCheck = require("./db/dbConnectCheck");
 const lobbyService = require("./service/lobby-service");
 const attributesRouter = require('./routes/attributesRouter');
+const heroesRouter = require('./routes/heroesRouter');
 
 // Импортируем созданный в отдельный файлах рутеры.
 const app = express();
@@ -34,6 +35,7 @@ app.use("/auth", authRouter);
 app.use("/builder", builderRouter);
 app.use("/boards", boardsRouter);
 app.use('/attributies', attributesRouter);
+app.use('/heroes', heroesRouter);
 
 app.use(errormiddleware);
 
@@ -61,6 +63,13 @@ io.on('connect', (socket) => {
     const user = lobbyService.getUser(socket.id);
     io.to(user.room).emit('sendMapFromServer', { user: user.user, map: data.oneGame});
   });
+  
+  socket.on('sendRerenderMapToServer', (data) => {
+    const user = lobbyService.getUser(socket.id);
+    console.log(data)
+    io.to(user.room).emit('sendRerenderMapFromServer', { user: user.user, map: data.rerenderMap});
+  });
+
 
   socket.on('sendRollToServer', (data) => {
     const user = lobbyService.getUser(socket.id);

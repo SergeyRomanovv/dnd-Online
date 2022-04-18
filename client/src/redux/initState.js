@@ -16,5 +16,7 @@ const initState = {
   boardtitle: {},
   oneGame: [],
   rollDice: {},
+  rerenderMap: [],
+  selectHero: '',
 };
 export default initState;

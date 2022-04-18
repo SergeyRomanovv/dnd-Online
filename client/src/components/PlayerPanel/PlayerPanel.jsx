@@ -17,7 +17,7 @@ export default function PlayerPanel() {
     }
   }
 
-  console.log('-----------', playerPanelTogle)
+  // console.log('-----------', playerPanelTogle)
 
   return (
     <div className={playerPanelTogle.view}>
