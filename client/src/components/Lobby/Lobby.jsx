@@ -17,19 +17,15 @@ function Lobby() {
   useEffect(() => {
     axios.get(`http://localhost:3001/heroes`)
       .then((res) => {
-        // console.log('heroes', res.data);
         setHeroes(res.data);
       })
   }, []);
 
   const getHeroHundler = (e) => {
-    // alert(e.target.alt);
     dispatch({ type: 'PLAYER_HERO', payload: e.target.alt });
     setHeroName(e.target.title);
     setVisibl('visible');
   }
-
-  console.log('heroooooooooo', playerHero);
 
   localStorage.setItem('userName', name)
   return (
