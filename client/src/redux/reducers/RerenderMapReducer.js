@@ -9,6 +9,11 @@ const RerenderMapReducer = (state = initState, action) => {
       newState[payload.x][payload.y] = { ...newState[payload.x][payload.y], attr: payload.imgSrc };
       return newState;
 
+      case 'DEL_ATTR_RERENDER':
+        const delNewState = [...state];
+        delNewState[payload.x][payload.y] = { ...delNewState[payload.x][payload.y], attr: payload.imgSrc };
+        return delNewState;
+
     default:
       return state;
   }

@@ -26,6 +26,7 @@ app.use(
 
 function getClientRooms() {
   const { rooms } = io.sockets.adapter;
+  console.log('rooms', rooms);
 
   return Array.from(rooms.keys()).filter((roomID) => validate(roomID) && version(roomID) === 4);
 }
@@ -43,6 +44,7 @@ function startSocket() {
     socket.on(ACTIONS.JOIN, (config) => {
       const { room: roomID } = config;
       const { rooms: joinedRooms } = socket;
+      // console.log('config',socket);
       // ! Получаем всех клиентов подключенных к комнате
       if (Array.from(joinedRooms).includes(roomID)) {
         return console.warn(`Already joined to ${roomID}`);
