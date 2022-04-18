@@ -1,0 +1,162 @@
+.panel {
+  background-color: rgb(121, 143, 143);
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  /* position: fixed;
+  bottom: 0; */
+}
+
+.panelImages {
+  font-size: 10px;
+  border-radius: 10px;
+  background-color: #ffffffa1;
+}
+
+.panelImages img {
+  border-radius: 10px;
+  width: 70px;
+  height: 70px;
+  cursor: grab;
+}
+
+.panelImages img:focus {
+  border: 3px solid #2058a1ee;
+  cursor: grabbing;
+}
+
+.title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0px;
+  width: 20%;
+}
+
+.btnBox input {
+  background-color: #e6e6e6;
+  padding: 5px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn {
+  padding: 7px;
+  border-radius: 7px;
+  border: 0px solid #ffffff00;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+
+/* proverks */
+
+.componentPanelBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.toggleBtn {
+  width: 100%;
+  padding: 5px;
+  background-color: chartreuse;
+}
+
+.mainPanel {
+  width: 70%;
+}
+
+.mainBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.imagesPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.emptyDiv {
+  height: 70px;
+  margin: 10px;
+}
+
+.panelImages {
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  position: relative;
+  animation-name: example2;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes example2 {
+  0%   {bottom: -200px;}
+  100% {bottom: 0px;}
+}
+
+.panelImages:focus {
+  outline: 3px solid white;
+}
+
+.panelImages:hover {
+  outline: 3px solid white;
+  opacity: 0.8;
+}
+
+.buttonsPanel button {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* toogle */
+.footerPanel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes example {
+  0%   {bottom:0px;}
+  100% {bottom:-172px;}
+}
+
+.footerPanel1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  animation-name: example1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes example1 {
+  0%   {bottom:-172px;}
+  100% {bottom:-0px;}
+}

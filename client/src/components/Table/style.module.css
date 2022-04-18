@@ -1,0 +1,24 @@
+.gameBox {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.tableBox {
+    border-collapse: collapse;
+}
+
+.tableBox td {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #4e4e4e;
+}
+
+.tableBox td:hover {
+  opacity: 0.9;
+  outline: 1px solid #fd792c;
+}
+
+.bgImg {
+    background-size: contain;
+}

@@ -1,32 +1,39 @@
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
-import {Routes, Route} from "react-router-dom";
+import Table from "./components/Table/Table";
+import Lobby from "./components/Lobby/Lobby";
+import { Routes, Route } from "react-router-dom";
 import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { checkAuth } from './redux/action/authAC';
-
+import GamePage from "./components/GamePage/GamePage";
+import VideoChat from "./components/Videochat/VideoChat";
+import Room from "./components/Room/Room";
+import Proverka from './components/Proverka/Proverka';
 
 function App() {
-
   const dispatch = useDispatch();
-  const user = useSelector(store => store.user);
-  console.log(user);
 
-  useEffect(()=> {
+  useEffect(() => {
     if (localStorage.getItem('token')) {
       dispatch(checkAuth());
-      console.log('useEfect');
     }
-  },[]);
+  }, []);
 
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <Routes>
+        <Route path="/" element={<Lobby />} />
+        <Route path="/game" element={<GamePage />} />
+        <Route path="/builder" element={<Table/>} />
         <Route path="/register" element={<Registration/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/video" element={<VideoChat/>} />
+        <Route path="/room/:id" element={<Room/>} />
+        <Route path="/proverka" element={<Proverka />} />
       </Routes>
     </>
   );

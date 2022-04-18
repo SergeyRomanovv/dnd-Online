@@ -26,12 +26,16 @@ function NavBar() {
         <AppBar className={style.mainBox} position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <Link className={style.link} to='/'><Button color="inherit">TODO-LIST</Button></Link>
+              <Link className={style.link} to='/'><Button color="inherit">D&D ONLINE</Button></Link>
             </Typography>
             {user ? 
+            <>
+            <Link className={style.link} to='/builder'><Button color="inherit">BUILDER</Button></Link>
             <Link onClick={(e)=> logout(e)} className={style.link} to='/login'><Button color="inherit">LOGOUT</Button></Link>
+            </>
             :
             <>
+            <Link className={style.link} to='/builder'><Button color="inherit">BUILDER</Button></Link>
             <Link className={style.link} to='/register'> <Button color="inherit">REGISTER</Button></Link>
             <Link className={style.link} to='/login'><Button color="inherit">LOGIN</Button></Link>
             </>

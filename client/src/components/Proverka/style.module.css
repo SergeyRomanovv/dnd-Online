@@ -1,0 +1,124 @@
+.attrPanel {
+  background-color: rgb(18, 235, 235);
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  /* position: fixed;
+  bottom: 0; */
+}
+
+.componentPanelBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.attrToggleBtn {
+  width: 10%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 12px 12px 0px 0px;
+  background-color: chartreuse;
+}
+
+.attrIconText {
+  margin-right: 5px;
+}
+
+.attrMainPanel {
+  width: 90%;
+}
+
+.mainBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.attrImagesPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.attrEmptyDiv {
+  height: 70px;
+  margin: 10px;
+}
+
+.attrPanelImages {
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  position: relative;
+  animation-name: example2;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes example2 {
+  0%   {bottom: -200px;}
+  100% {bottom: 0px;}
+}
+
+.attrPanelImages:focus {
+  outline: 3px solid white;
+}
+
+.attrPanelImages:hover {
+  outline: 3px solid white;
+  opacity: 0.8;
+}
+
+.attrButtonsPanel button {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* toogle */
+.proverkaPanel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* position: fixed;
+  bottom: 0; */
+  /* position: relative;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  z-index: 1; */
+}
+
+@keyframes example {
+  0%   {bottom:0px;}
+  100% {bottom:-172px;}
+}
+
+.masterPanel1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* position: fixed;
+  bottom: 0; */
+  /* position: relative;
+  animation-name: example1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  z-index: -1; */
+}
+
+@keyframes example1 {
+  0%   {bottom:-172px;}
+  100% {bottom:-0px;}
+}

@@ -1,0 +1,167 @@
+.gamePage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: baseline;
+}
+
+.leftSide {
+  /* border: 1px solid black; */
+  min-height: 100vh;
+  width: 10%;
+}
+
+.mainSide {
+  /* border: 1px solid black; */
+  min-height: 100vh;
+  width: 77%;
+  text-align: center;
+}
+
+.rightSide {
+  /* border: 1px solid black; */
+  min-height: 100vh;
+  width: 13%;
+}
+
+.topPanel {
+  width: 100%;
+  padding: 20px;
+  background-color: chartreuse;
+  position: sticky;
+  top: 0;
+}
+
+/* footer toogle */
+
+.footerPanel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+  position: fixed;
+  bottom: 0;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes example {
+  0%   {bottom:0px;}
+  100% {bottom:-154px;}
+}
+
+.footerPanel1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+  position: fixed;
+  bottom: 0;
+  animation-name: example1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes example1 {
+  0%   {bottom:-154px;}
+  100% {bottom:-0px;}
+}
+
+.gamePanelBtn {
+  width: 10%;
+  background-color: rgb(62, 62, 109);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.gamePanelBtn:hover {
+  background-color: rgba(69, 69, 119, 0.651);
+}
+
+.iconText {
+  margin-right: 5px;
+}
+
+/* footer toogle */
+
+.attributies {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(48, 48, 87);
+}
+
+.attributies img:focus {
+  outline: 2px solid white;
+}
+
+.footerPanel img {
+  cursor: grab;
+}
+
+.footerPanel img:active {
+  cursor: grabbing;
+}
+
+.chooseBoard {
+  background-color: rgba(210, 105, 30, 0);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.chooseBoard button {
+  padding: 5px;
+  color: #fff;
+  width: 80%;
+  margin: 8px 0px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #2e2724 20%, #55473b);
+  cursor: pointer;
+}
+
+.gameBox {
+  margin-top: 30px;
+  margin-bottom: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.tableBox {
+  border-collapse: collapse;
+  -webkit-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+  box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+}
+
+.tableBox td {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #4e4e4e;
+}
+
+.tableBox td img {
+  cursor: grab;
+}
+
+.tableBox td img:active {
+  cursor: grabbing;
+}
+
+.tableBox td:focus {
+  outline: 2px solid white;
+}
+
+.bgImg {
+  background-size: contain;
+}
+

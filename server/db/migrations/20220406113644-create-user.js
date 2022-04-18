@@ -21,6 +21,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
+      isGameMaster:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       activationLink:{
         type: Sequelize.STRING,
       },

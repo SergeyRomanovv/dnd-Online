@@ -1,0 +1,85 @@
+.mainBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #77645c 20%, #aa8a6f);
+  height: 168px;
+}
+
+.masterPanel {
+  width: 100%;
+  background: linear-gradient(90deg, #77645c 20%, #aa8a6f);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* position: fixed;
+  bottom: 0;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  z-index: 1; */
+}
+
+/* @keyframes example {
+  0%   {bottom:0px;}
+  100% {bottom:-170px;}
+} */
+
+.masterPanel1 {
+  width: 100%;
+  display: flex;
+  background: linear-gradient(90deg, #77645c 20%, #aa8a6f);
+  flex-direction: column;
+  justify-content: space-around;
+  /* position: fixed;
+  bottom: 0;
+  animation-name: example1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  z-index: -1; */
+}
+
+/* @keyframes example1 {
+  0%   {bottom:-170px;}
+  100% {bottom:-0px;}
+} */
+
+.attrToggleBtn {
+  width: 10%;
+}
+
+.diceBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.box input {
+    font-weight: 600;
+    background-color: rgba(211, 211, 211, 0.808);
+    width: 40px;
+    border: none;
+    outline: none;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.box img {
+    height: 60px;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.resultBox {
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
