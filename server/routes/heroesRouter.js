@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const { Attributes } = require('../db/models')
+const { Hiro } = require('../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const images = await Attributes.findAll({ where: { attr_category_id: 2 }, raw: true });
-    // console.log(images);
-    res.json(images);
+    const hiroes = await Hiro.findAll({ raw: true });
+    console.log(hiroes);
+    res.json(hiroes);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);

@@ -6,9 +6,8 @@ import axios from 'axios';
 
 function Lobby() {
   const name = useSelector((store) => store.user);
-  const playerHero = useSelector((store) => store.selectHero);
   const [room, setRoom] = useState("");
-  const [visibl, setVisibl] = useState('hidden')
+  const [visibl, setVisibl] = useState('hidden');
   const [heroes, setHeroes] = useState([]);
 
   const dispatch = useDispatch(); 
@@ -16,20 +15,16 @@ function Lobby() {
   useEffect(() => {
     axios.get(`http://localhost:3001/heroes`)
       .then((res) => {
-        // console.log('heroes', res.data);
         setHeroes(res.data);
-      })
+      });
   }, []);
 
   const getHeroHundler = (e) => {
-    alert(e.target.alt);
     dispatch({ type: 'PLAYER_HERO', payload: e.target.alt });
     setVisibl('visible');
-  }
+  };
 
-  console.log('heroooooooooo', playerHero);
-
-  localStorage.setItem('userName', name)
+  localStorage.setItem('userName', name);
   return (
     <>
       <div className={style.lobbyBox}>
