@@ -135,7 +135,7 @@
   position: fixed;
   bottom: 0;
   animation-name: example;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -152,7 +152,7 @@
   position: fixed;
   bottom: 0;
   animation-name: example1;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 

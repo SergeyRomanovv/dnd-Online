@@ -1,0 +1,72 @@
+.lobbyBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroesBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.oneHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.oneHero img {
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff9f;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.oneHero img:focus {
+  outline: 2px solid white;
+}
+
+.oneHero img:hover {
+  outline: 2px solid white;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.oneHero span {
+  background-color: whitesmoke;
+  border-radius: 8px;
+  border: none;
+  width: 70px;
+  text-align: center;
+}
+
+.roomBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.visHid {
+  visibility:visible
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formSubmit {
+  margin-top: 20px;
+}
