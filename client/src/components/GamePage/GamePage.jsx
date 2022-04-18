@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './style.module.css';
 import axios from 'axios';
-import RollDice from '../RollDice/RollDice';
 import Room from '../Room/Room';
 import io from 'socket.io-client';
-// import Proverka from '../Proverka/Proverka';
-import AttrPanel from '../AttrPanel/AttrPanel';
 import GameMasterPanel from '../GameMasterPanel/GameMasterPanel';
 import PlayerPanel from '../PlayerPanel/PlayerPanel';
 let socket;
 
 export default function GamePage() {
   const oneGame = useSelector(state => state.oneGame);
+  const playerHero = useSelector((store) => store.selectHero);
   // const rerenderMap = useSelector(state => state.rerenderMap)
   const rollState = useSelector((store) => store.rollDice);
   const dispatch = useDispatch();
@@ -20,7 +18,7 @@ export default function GamePage() {
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
   const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
-  const [togle, setTogle] = useState({view: style.footerPanel1, icon: 'fa-solid fa-chevron-down'});
+  const [togle, setTogle] = useState({ view: style.footerPanel1, icon: 'fa-solid fa-chevron-down' });
 
   // ! ---------------------------Soket IO------------------------------------------
   const [user, setUser] = useState("");
@@ -30,8 +28,6 @@ export default function GamePage() {
   const [rerenderMap, setRerenderMap] = useState([]);
   const [rollResult, setRollResult] = useState({});
   const socketUrl = 'http://localhost:3001';
-
-  console.log('ебливая хуйня с===3', rerenderMap);
 
   useEffect(() => {
     const search = window.location.search;
@@ -63,15 +59,15 @@ export default function GamePage() {
   }, [socketUrl, window.location.search]);
 
   useEffect(() => {
-    socket.emit('sendMapToServer', {oneGame});
+    socket.emit('sendMapToServer', { oneGame });
   }, [oneGame]);
 
   useEffect(() => {
-    socket.emit('sendRollToServer', {rollState});
+    socket.emit('sendRollToServer', { rollState });
   }, [rollState]);
 
   useEffect(() => {
-    socket.emit('sendRerenderMapToServer', {rerenderMap});
+    socket.emit('sendRerenderMapToServer', { rerenderMap });
   }, [rerenderMap]);
 
   useEffect(() => {
@@ -82,21 +78,20 @@ export default function GamePage() {
     socket.on('roomMembers', usrs => {
       setUsers(usrs);
     });
-  
+
   }, [oneGame]);
 
   useEffect(() => {
     socket.on('sendRerenderMapFromServer', data => {
       if (localStorage.getItem("isGM") === 'true') {
-        let game = data.map
-        dispatch({ type: 'SET_ONE_GAME', payload: game })
+        let game = data.map;
+        dispatch({ type: 'SET_ONE_GAME', payload: game });
       } else {
         setRenderMap(data.map);
       }
     });
-  
+
   }, [rerenderMap]);
-  console.log('renderMap', renderMap)
 
   useEffect(() => {
     socket.on('sendRollFromServer', data => {
@@ -108,8 +103,8 @@ export default function GamePage() {
   // ? ---------------------------Soket IO------------------------------------------
 
   useEffect(() => {
-    const userName = localStorage.getItem('userName')
-    axios.post('http://localhost:3001/boards/all', {userName})
+    const userName = localStorage.getItem('userName');
+    axios.post('http://localhost:3001/boards/all', { userName })
       .then((boardsFromServer) => {
         setAllBoards(boardsFromServer.data);
       });
@@ -118,18 +113,17 @@ export default function GamePage() {
   const getGameHundler = (id) => {
     const game = JSON.parse(allBoards.filter(el => el.id === id)[0].board);
     dispatch({ type: 'SET_ONE_GAME', payload: game });
-    // setOneGameBoard(game)
   };
 
 
   function setTDHandler(e) {
     if (localStorage.getItem("isGM") === 'true') {
-    const x = e.target.parentNode.rowIndex;
-    const y = e.target.cellIndex;
-    setGameBoardCoordinates({ x, y });
-    dispatch({ type: 'SET_ATTR', payload: { x, y, imgSrc } });
+      const x = e.target.parentNode.rowIndex;
+      const y = e.target.cellIndex;
+      setGameBoardCoordinates({ x, y });
+      dispatch({ type: 'SET_ATTR', payload: { x, y, imgSrc } });
     } else {
-      const heroUrl = '../images/Heroes/Hero_1.png'
+      const heroUrl = playerHero;
 
       const x = e.target.parentNode.rowIndex;
       const y = e.target.cellIndex;
@@ -137,31 +131,46 @@ export default function GamePage() {
       let playerTempMap = JSON.parse(JSON.stringify(renderMap));
       playerTempMap[x][y] = { ...playerTempMap[x][y], attr: heroUrl };
 
-      setRerenderMap(playerTempMap)
+      setRerenderMap(playerTempMap);
     }
   }
 
   function masterHandler(e) {
-    if (e.altKey) {
-      const x = e.target.parentNode.parentNode.rowIndex;
-      const y = e.target.parentNode.cellIndex;
-      setGameBoardCoordinates({ x, y });
-      dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
-    } else if (e.shiftKey) {
-      const x = e.target.parentNode.parentNode.rowIndex;
-      const y = e.target.parentNode.cellIndex;
-      const imgSrc = e.target.alt;
-      setMoveAttr({ x, y, imgSrc });
-      // dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
-    } else if (e.ctrlKey) {
-      const { x, y, imgSrc } = moveAttr;
-      const xx = e.target.parentNode.rowIndex;
-      const yy = e.target.cellIndex;
-      const setObj = { x: xx, y: yy, imgSrc };
-      const delObj = { x, y, imgSrc: '' };
-      dispatch({ type: 'DEL_ATTR', payload: delObj });
-      dispatch({ type: 'SET_ATTR', payload: setObj });
-      setMoveAttr({});
+    if (localStorage.getItem("isGM") === 'true') {
+
+      if (e.altKey) {
+        const x = e.target.parentNode.parentNode.rowIndex;
+        const y = e.target.parentNode.cellIndex;
+        setGameBoardCoordinates({ x, y });
+        dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
+      } else if (e.shiftKey) {
+        const x = e.target.parentNode.parentNode.rowIndex;
+        const y = e.target.parentNode.cellIndex;
+        const imgSrc = e.target.alt;
+        setMoveAttr({ x, y, imgSrc });
+        // dispatch({ type: 'DEL_ATTR', payload: { x, y, imgSrc: '' } });
+      } else if (e.ctrlKey) {
+        const { x, y, imgSrc } = moveAttr;
+        const xx = e.target.parentNode.rowIndex;
+        const yy = e.target.cellIndex;
+        const setObj = { x: xx, y: yy, imgSrc };
+        const delObj = { x, y, imgSrc: '' };
+        dispatch({ type: 'DEL_ATTR', payload: delObj });
+        dispatch({ type: 'SET_ATTR', payload: setObj });
+        setMoveAttr({});
+      }
+    } else {
+      if (e.altKey) {
+        const x = e.target.parentNode.parentNode.rowIndex;
+        const y = e.target.parentNode.cellIndex;
+        let playerTempMap = JSON.parse(JSON.stringify(renderMap));
+        if (playerTempMap[x][y].attr === playerHero) {
+          playerTempMap[x][y] = { ...playerTempMap[x][y], attr: '' };
+          setRerenderMap(playerTempMap);
+        } else {
+          return;
+        }
+      }
     }
   }
 
@@ -169,30 +178,30 @@ export default function GamePage() {
     setImgSrc(e.target.alt);
   }
 
-  function togleHundler() {
-    if (togle.view === style.footerPanel) {
-      setTogle({view: style.footerPanel1, icon: 'fa-solid fa-chevron-down'})
-    } else {
-      setTogle({view: style.footerPanel, icon: 'fa-solid fa-chevron-up'})
-    }
-  }
+  // function togleHundler() {
+  //   if (togle.view === style.footerPanel) {
+  //     setTogle({ view: style.footerPanel1, icon: 'fa-solid fa-chevron-down' });
+  //   } else {
+  //     setTogle({ view: style.footerPanel, icon: 'fa-solid fa-chevron-up' });
+  //   }
+  // }
 
   return (
     <>
       {/* <div className={style.topPanel}>top panel</div> */}
       <div className={style.gamePage}>
         {
-          localStorage.getItem("isGM") === 'true' ? 
-          (
-            <div className={style.leftSide}>
-            <div className={style.chooseBoard}>
-              <p>chosse board</p>
-              {allBoards.map((board) => <button key={board.id} onClick={() => getGameHundler(board.id)}>{board.title}</button>)}
-            </div>
-          </div>
-          ) : (
-            <span>you are not GM</span>
-          )
+          localStorage.getItem("isGM") === 'true' ?
+            (
+              <div className={style.leftSide}>
+                <div className={style.chooseBoard}>
+                  <p>chosse board</p>
+                  {allBoards.map((board) => <button key={board.id} onClick={() => getGameHundler(board.id)}>{board.title}</button>)}
+                </div>
+              </div>
+            ) : (
+              <span>you are not GM</span>
+            )
         }
 
 
@@ -214,20 +223,20 @@ export default function GamePage() {
             </table>
           </div>
         </div>
-        <div className={style.rightSide}> 
-        {<div> 
+        <div className={style.rightSide}>
+          {<div>
             {rollResult.user}
             {rollResult.roll?.d4?.length > 0 ? <div>D4: {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
             {rollResult.roll?.d6?.length > 0 ? <div>D6: {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
             {rollResult.roll?.d20?.length > 0 ? <div>D20: {rollResult.roll.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-         </div>} 
-        <Room/>
+          </div>}
+          <Room />
         </div>
       </div>
       {
         localStorage.getItem("isGM") === 'true' ?
-        <GameMasterPanel getImgSrcHundler={getImgSrcHundler}/> :
-        <PlayerPanel />
+          <GameMasterPanel getImgSrcHundler={getImgSrcHundler} /> :
+          <PlayerPanel />
       }
     </>
   )
