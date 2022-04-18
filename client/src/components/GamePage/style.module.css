@@ -9,6 +9,7 @@
   /* border: 1px solid black; */
   min-height: 100vh;
   width: 10%;
+  background: linear-gradient(90deg, #ffffff9a, #ffffff59);
 }
 
 .mainSide {
@@ -22,6 +23,7 @@
   /* border: 1px solid black; */
   min-height: 100vh;
   width: 13%;
+  background-color: #3e3c4d;
 }
 
 .topPanel {
@@ -125,7 +127,7 @@
   margin: 8px 0px;
   border: none;
   border-radius: 6px;
-  background: linear-gradient(90deg, #2e2724 20%, #55473b);
+  background: linear-gradient(90deg, #3e3c4d 20%, #524f68);
   cursor: pointer;
 }
 
