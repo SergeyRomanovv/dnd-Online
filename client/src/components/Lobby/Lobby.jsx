@@ -10,6 +10,7 @@ function Lobby() {
   const [room, setRoom] = useState("");
   const [visibl, setVisibl] = useState('hidden')
   const [heroes, setHeroes] = useState([]);
+  const [heroName, setHeroName] = useState('');
 
   const dispatch = useDispatch(); 
 
@@ -22,8 +23,9 @@ function Lobby() {
   }, []);
 
   const getHeroHundler = (e) => {
-    alert(e.target.alt);
+    // alert(e.target.alt);
     dispatch({ type: 'PLAYER_HERO', payload: e.target.alt });
+    setHeroName(e.target.title);
     setVisibl('visible');
   }
 
@@ -36,8 +38,9 @@ function Lobby() {
         <div className={style.heroesBox}>
           <h1>Select a character</h1>
           <div className={style.imgBox}>
-            {heroes.map(pic => <div key={pic.id} id={pic.id} className={style.oneHero}> <span>{pic.title}</span> <img src={pic.url} alt={pic.url} tabIndex="0" onClick={getHeroHundler} /> </div> )}
+            {heroes.map(pic => <div key={pic.id} id={pic.id} className={style.oneHero}> <span>{pic.title}</span> <img src={pic.url} alt={pic.url} tabIndex="0" title={pic.title} onClick={getHeroHundler} /> </div> )}
           </div>
+          <h3 style={{visibility: visibl}}>Your hero is {heroName}</h3>
         </div>
         <div className={style.roomBox} style={{visibility: visibl}}>
           <h1>Select a room</h1>
