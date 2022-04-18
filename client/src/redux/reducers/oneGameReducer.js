@@ -7,15 +7,10 @@ const oneGameReducer = (state = initState, action) => {
       return payload;
 
     case 'SET_ATTR':
-      for (let i = 0; i < state.length; i++) {
-        for (let j = 0; j < state[i].length; j++) {
-          if (i === payload.x && j === payload.y) {
-            state[i][j] = { ...state[i][j], attr: payload.imgSrc }
-            return [...state];
-          }
-        }
-      }
-      break;
+      const newState = [...state];
+      newState[payload.x][payload.y] = { ...newState[payload.x][payload.y], attr: payload.imgSrc };
+      return newState;
+
     case 'DEL_ATTR':
       for (let i = 0; i < state.length; i++) {
         for (let j = 0; j < state[i].length; j++) {

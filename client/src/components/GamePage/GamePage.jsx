@@ -13,6 +13,7 @@ let socket;
 
 export default function GamePage() {
   const oneGame = useSelector(state => state.oneGame);
+  // const rerenderMap = useSelector(state => state.rerenderMap)
   const rollState = useSelector((store) => store.rollDice);
   const dispatch = useDispatch();
   const [allBoards, setAllBoards] = useState([]);
@@ -26,8 +27,11 @@ export default function GamePage() {
   const [room, setRoom] = useState("");
   const [users, setUsers] = useState([]);
   const [renderMap, setRenderMap] = useState([]);
+  const [rerenderMap, setRerenderMap] = useState([]);
   const [rollResult, setRollResult] = useState({});
   const socketUrl = 'http://localhost:3001';
+
+  console.log('ебливая хуйня с===3', rerenderMap);
 
   useEffect(() => {
     const search = window.location.search;
@@ -67,6 +71,10 @@ export default function GamePage() {
   }, [rollState]);
 
   useEffect(() => {
+    socket.emit('sendRerenderMapToServer', {rerenderMap});
+  }, [rerenderMap]);
+
+  useEffect(() => {
     socket.on('sendMapFromServer', data => {
       setRenderMap(data.map);
     });
@@ -76,6 +84,19 @@ export default function GamePage() {
     });
   
   }, [oneGame]);
+
+  useEffect(() => {
+    socket.on('sendRerenderMapFromServer', data => {
+      if (localStorage.getItem("isGM") === 'true') {
+        let game = data.map
+        dispatch({ type: 'SET_ONE_GAME', payload: game })
+      } else {
+        setRenderMap(data.map);
+      }
+    });
+  
+  }, [rerenderMap]);
+  console.log('renderMap', renderMap)
 
   useEffect(() => {
     socket.on('sendRollFromServer', data => {
@@ -102,10 +123,22 @@ export default function GamePage() {
 
 
   function setTDHandler(e) {
+    if (localStorage.getItem("isGM") === 'true') {
     const x = e.target.parentNode.rowIndex;
     const y = e.target.cellIndex;
     setGameBoardCoordinates({ x, y });
     dispatch({ type: 'SET_ATTR', payload: { x, y, imgSrc } });
+    } else {
+      const heroUrl = '../images/Heroes/Hero_1.png'
+
+      const x = e.target.parentNode.rowIndex;
+      const y = e.target.cellIndex;
+
+      let playerTempMap = JSON.parse(JSON.stringify(renderMap));
+      playerTempMap[x][y] = { ...playerTempMap[x][y], attr: heroUrl };
+
+      setRerenderMap(playerTempMap)
+    }
   }
 
   function masterHandler(e) {
