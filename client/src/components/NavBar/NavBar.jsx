@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -9,8 +9,10 @@ import style from "./style.module.css";
 import {submitLogout} from "../../redux/action/authAC";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function NavBar() {
+
   const user = useSelector(store => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,17 +22,28 @@ function NavBar() {
     navigate('/');
   };
 
+  const statusHundler = () => {
+    axios.patch('http://localhost:3001/userstatus', { user })
+      .then((res) => {
+        console.log(res.data)
+      })
+  }
+
   return (
     <>
       <Box className={style.mainBox} sx={{ flexGrow: 1 }}>
         <AppBar className={style.mainBox} position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <Link className={style.link} to='/'><Button color="inherit">D&D ONLINE</Button></Link>
+              <Link className={style.link} to='/'><Button color="inherit">DUNGEON ONLINE</Button></Link>
             </Typography>
             {user ? 
             <>
             <Link className={style.link} to='/builder'><Button color="inherit">BUILDER</Button></Link>
+            { localStorage.getItem("isGM") === 'true' ?
+              <Link onClick={() => statusHundler()} className={style.link} to='/'><Button color="inherit">BECOME PLAYER </Button></Link> :
+              <Link onClick={() => statusHundler()} className={style.link} to='/'><Button color="inherit">BECOME GAMEMASTER</Button></Link>
+            }
             <Link className={style.link} to='/GamePlay'><Button color="inherit">GAMEPLAY</Button></Link>
             <Link onClick={(e)=> logout(e)} className={style.link} to='/login'><Button color="inherit">LOGOUT</Button></Link>
             </>
