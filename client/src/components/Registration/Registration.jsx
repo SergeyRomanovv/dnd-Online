@@ -24,25 +24,25 @@ export default function Registration() {
       <form onSubmit={submitHandler} className={style.mainContainer}>
         <div className={style.mainBox}>
           <div className={style.titleBox}>
-            <p className={style.title}>Регистрация</p>
+            <p className={style.title}>Registration</p>
           </div>
           <div className={style.inputBox}>
-            <p className={style.textBox}>Введите имя</p>
+            <p className={style.textBox}>Enter Username</p>
             <input className={style.input} name="userName" type="text"
               onChange={changeHandler} />
           </div >
           <div className={style.inputBox}>
-            <p className={style.textBox}>Введите email</p>
+            <p className={style.textBox}>Enter Email</p>
             <input className={style.input} name="email" type="text"
               onChange={changeHandler} />
           </div>
           <div className={style.inputBox}>
-            <p className={style.textBox}>Введите пароль</p>
+            <p className={style.textBox}>Enter Password</p>
             <input className={style.input} name="password" type="password"
               onChange={changeHandler} />
           </div>
           <div className={style.buttonBox}>
-            <button type="submit" className={style.button}>Подтвердить</button>
+            <button type="submit" className={style.button}>Confirm</button>
           </div>
         </div>
       </form>
