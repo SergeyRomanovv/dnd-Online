@@ -82,15 +82,17 @@ export default function Table() {
 
   return (
     <div className={style.mainBox}>
-      <div>
+      <div className={style.mainConteiner}>
+        {/* <div className={style.formBox}> */}
         <form className={style.generateBox}>
-          <label htmlFor="row">rows</label>
+          <label htmlFor="row">ROWS</label>
           <input type="number" id='row' name="row" value={size.row || ''} min='1' max='16' onChange={(e) => sizeHundler(e)} />
-          <label htmlFor="coll">colls</label>
+          <label htmlFor="coll">COLLS</label>
           <input type="number" id='coll' name="coll" value={size.coll || ''} min='1' max='16' onChange={(e) => sizeHundler(e)} />
-          <button onClick={(e) => generateHundler (e, size)}>Generate</button>
-          <button onClick={(e) => generateRandomHundler (e, size)}>Generate Random</button>
+          <button onClick={(e) => generateHundler (e, size)}>GENERATE</button>
+          <button onClick={(e) => generateRandomHundler (e, size)}>GENERATE RANDOM</button>
         </form>
+        {/* </div> */}
       </div>
       <div className={style.gameBox}>
     <table onClick={(e)=> changeHandler(e)} className={style.tableBox}>

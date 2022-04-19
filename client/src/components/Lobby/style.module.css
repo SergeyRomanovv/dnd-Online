@@ -11,6 +11,20 @@
   align-items: center;
 }
 
+.heroesBox h1 {
+  font-weight: 500;
+  padding: 10px;
+  background-color: #ffffffd8;
+  border-radius: 12px;
+}
+
+.heroesBox h3 {
+  font-weight: 500;
+  padding: 10px;
+  background-color: #ffffffd8;
+  border-radius: 12px;
+}
+
 .imgBox {
   display: flex;
   flex-direction: row;
@@ -27,7 +41,7 @@
 .oneHero img {
   width: 70px;
   height: 70px;
-  background-color: #ffffff9f;
+  background-color: #ffffffd8;
   border-radius: 8px;
   margin: 10px;
 }
@@ -43,7 +57,9 @@
 }
 
 .oneHero span {
-  background-color: whitesmoke;
+  color: #fff;
+  padding: 5px;
+  background-color: #3e3c4d;
   border-radius: 8px;
   border: none;
   width: 70px;
@@ -55,6 +71,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.roomBox h1 {
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #ffffffd8;
+}
+
+.roomBox input {
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 7px;
 }
 
 .visHid {
