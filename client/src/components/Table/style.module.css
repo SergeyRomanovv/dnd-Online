@@ -1,7 +1,39 @@
 .gameBox {
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
+}
+
+.mainConteiner {
+    margin-top: 7px;
+    display: flex;
+    justify-content: center;
+}
+
+.generateBox {
+    font-weight: 600;
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    border-radius: 12px;
+    background-color: #ffffffb0;
+}
+
+.generateBox input {
+    border: 1px solid #3e3c4d;
+    outline: none;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.generateBox button {
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    background-color: #3e3c4d;
 }
 
 .tableBox {
