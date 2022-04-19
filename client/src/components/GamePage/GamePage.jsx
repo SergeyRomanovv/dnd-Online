@@ -228,6 +228,9 @@ export default function GamePage() {
             {rollResult.user}
             {rollResult.roll?.d4?.length > 0 ? <div>D4: {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
             {rollResult.roll?.d6?.length > 0 ? <div>D6: {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d8?.length > 0 ? <div>D8: {rollResult.roll.d8.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d10?.length > 0 ? <div>D10: {rollResult.roll.d10.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d12?.length > 0 ? <div>D12: {rollResult.roll.d12.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
             {rollResult.roll?.d20?.length > 0 ? <div>D20: {rollResult.roll.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
           </div>}
           <Room />
