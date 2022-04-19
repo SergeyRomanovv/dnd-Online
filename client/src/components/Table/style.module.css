@@ -1,17 +1,20 @@
 .gameBox {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .tableBox {
-    border-collapse: collapse;
+  border-collapse: collapse;
+  -webkit-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+  box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
 }
 
 .tableBox td {
-    width: 70px;
-    height: 70px;
-    border: 1px solid #4e4e4e;
+  width: 70px;
+  height: 70px;
+  border: 1px solid #4e4e4e;
 }
 
 .tableBox td:hover {
@@ -20,5 +23,5 @@
 }
 
 .bgImg {
-    background-size: contain;
+  background-size: contain;
 }

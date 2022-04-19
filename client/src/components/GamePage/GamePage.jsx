@@ -216,7 +216,7 @@ export default function GamePage() {
                   renderMap.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
                     ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} />
                     : <span></span>}</td>)}</tr>)
-                  : <span>Chosse a game from left side</span>
+                  : <span>Chosse a game field from left side</span>
                 }
               </tbody>
               <tfoot></tfoot>

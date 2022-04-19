@@ -114,6 +114,7 @@
   background-color: #77645c;
   padding: 10px;
   border: none;
+  cursor: pointer;
 } 
 
 .btns {
@@ -130,4 +131,5 @@
   border-radius: 6px;
   background-color: #ffffff9f;
   color: black;
+  cursor: pointer;
 }

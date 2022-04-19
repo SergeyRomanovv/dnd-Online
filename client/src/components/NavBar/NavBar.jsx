@@ -31,11 +31,13 @@ function NavBar() {
             {user ? 
             <>
             <Link className={style.link} to='/builder'><Button color="inherit">BUILDER</Button></Link>
+            <Link className={style.link} to='/GamePlay'><Button color="inherit">GAMEPLAY</Button></Link>
             <Link onClick={(e)=> logout(e)} className={style.link} to='/login'><Button color="inherit">LOGOUT</Button></Link>
             </>
             :
             <>
             <Link className={style.link} to='/builder'><Button color="inherit">BUILDER</Button></Link>
+            <Link className={style.link} to='/GamePlay'><Button color="inherit">GAMEPLAY</Button></Link>
             <Link className={style.link} to='/register'> <Button color="inherit">REGISTER</Button></Link>
             <Link className={style.link} to='/login'><Button color="inherit">LOGIN</Button></Link>
             </>
