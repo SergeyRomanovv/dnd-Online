@@ -1,6 +1,9 @@
 .attrPanel {
-  background: linear-gradient(90deg, #77645c 20%, #aa8a6f);
-  /* background-color: #826F66; */
+  /* background: linear-gradient(90deg, #482921 20%, #6b4035); */
+  /* background-color: #826f6600; */
+  /* background-image: url('../../../public/Bottom_1.png');
+  background-size: contain; */
+  background: linear-gradient(90deg, #4f4c64 20%, #635f80);
   width: 100%;
   padding: 20px;
   display: flex;
@@ -84,6 +87,9 @@
 }
 
 .attrButtonsPanel button {
+
+
+
   background-color: #ffffff9f;
   color: black;
   cursor: pointer;
