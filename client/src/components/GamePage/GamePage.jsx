@@ -200,7 +200,9 @@ export default function GamePage() {
                 </div>
               </div>
             ) : (
-              <span>you are not GM</span>
+              <div className={style.leftSide}>
+                <span>you are not GM</span>
+              </div>
             )
         }
 
