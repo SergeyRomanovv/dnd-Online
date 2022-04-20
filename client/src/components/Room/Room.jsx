@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router';
 import useWebRTC, { LOCAL_VIDEO } from '../../hooks/useWebRTC';
 import style from './style.module.css';
 
@@ -7,7 +6,9 @@ import style from './style.module.css';
 
 export default function Room() {
 
-  const {id: roomID} = useParams();
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const roomID = params.get('room');
   const {clients, provideMediaRef} = useWebRTC(roomID);
 
   return (

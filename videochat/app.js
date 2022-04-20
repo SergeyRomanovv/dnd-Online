@@ -3,7 +3,6 @@ const { PORT } = process.env || 3001;
 const express = require("express");
 const cors = require("cors");
 const coockieParser = require("cookie-parser");
-const {version, validate} = require("uuid");
 const ACTIONS = require("./action/soketAction");
 
 
@@ -26,9 +25,7 @@ app.use(
 
 function getClientRooms() {
   const { rooms } = io.sockets.adapter;
-  console.log('rooms', rooms);
-
-  return Array.from(rooms.keys()).filter((roomID) => validate(roomID) && version(roomID) === 4);
+  return Array.from(rooms.keys());
 }
 
 function shareRoomsInfo() {
@@ -44,7 +41,6 @@ function startSocket() {
     socket.on(ACTIONS.JOIN, (config) => {
       const { room: roomID } = config;
       const { rooms: joinedRooms } = socket;
-      // console.log('config',socket);
       // ! Получаем всех клиентов подключенных к комнате
       if (Array.from(joinedRooms).includes(roomID)) {
         return console.warn(`Already joined to ${roomID}`);
@@ -72,10 +68,9 @@ function startSocket() {
       const { rooms } = socket;
 
       Array.from(rooms)
-        // LEAVE ONLY CLIENT CREATED ROOM
-        .filter((roomID) => validate(roomID) && version(roomID) === 4)
-        .forEach((roomID) => {
-          const clients = Array.from(io.sockets.adapter.rooms.get(roomID) || []);
+      // LEAVE ONLY CLIENT CREATED ROOM
+      .forEach((roomID) => {
+        const clients = Array.from(io.sockets.adapter.rooms.get(roomID) || []);
 
           clients.forEach((clientID) => {
             io.to(clientID).emit(ACTIONS.REMOVE_PEER, {
