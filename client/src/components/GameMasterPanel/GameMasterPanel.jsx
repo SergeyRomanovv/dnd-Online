@@ -49,8 +49,8 @@ export default function GameMasterPanel({getImgSrcHundler}) {
       <button onClick={gmPanelTogleHundler} className={style.attrToggleBtn}><span className={style.attrIconText}>Game Master Panel</span> <i class={attrMasterTogle.icon}></i></button>
       </div>
       <div className={style.btns}>
-        <button onClick={proverkaTogleHundler}>attr</button>
-        <button onClick={diceTogleHundler}>dices</button>
+        <button onClick={proverkaTogleHundler}>ITEMS</button>
+        <button onClick={diceTogleHundler}>DICES</button>
       </div>
       <div className={style.doubleBox}>
         <div className={proverkaTogle}>

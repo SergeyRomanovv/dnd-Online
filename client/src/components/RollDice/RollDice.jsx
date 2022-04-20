@@ -25,6 +25,7 @@ export default function RollDice() {
     let sumd6 = [];
     let sumd8 = [];
     let sumd10 = [];
+    let sumd100 = [];
     let sumd12 = [];
     let sumd20 = [];
     if (inputs.d4) {
@@ -47,6 +48,11 @@ export default function RollDice() {
         sumd10.push(random(10));
       }
     }
+    if (inputs.d100) {
+      for (let i = 0; i < inputs.d100; i++) {
+        sumd100.push(random(10) * 10);
+      }
+    }
     if (inputs.d12) {
       for (let i = 0; i < inputs.d12; i++) {
         sumd12.push(random(12));
@@ -57,7 +63,7 @@ export default function RollDice() {
         sumd20.push(random(20));
       }
     }
-    dispatch({ type: 'ROLL_DICE', payload: { d4: sumd4, d6: sumd6, d8: sumd8, d10: sumd10, d12: sumd12, d20: sumd20 } });
+    dispatch({ type: 'ROLL_DICE', payload: { d4: sumd4, d6: sumd6, d8: sumd8, d10: sumd10, d100: sumd100, d12: sumd12, d20: sumd20 } });
     // setDices((prev) => ({ ...prev, d4: sumd4, d6: sumd6, d20: sumd20 }));
     setInputs({});
   };
@@ -90,8 +96,12 @@ export default function RollDice() {
             <input onChange={changeHandler} value={inputs.d8 || ''} type='number' name='d8' min='0' max='12' />
           </div>
           <div className={style.diceBox}>
-            <img src='../images/dices/7.png' alt='dice10' />
+            <img src='../images/dices/4.png' alt='dice10' />
             <input onChange={changeHandler} value={inputs.d10 || ''} type='number' name='d10' min='0' max='12' />
+          </div>
+          <div className={style.diceBox}>
+            <img src='../images/dices/7.png' alt='dice100' />
+            <input onChange={changeHandler} value={inputs.d100 || ''} type='number' name='d100' min='0' max='12' />
           </div>
           <div className={style.diceBox}>
             <img src='../images/dices/5.png' alt='dice12' />
