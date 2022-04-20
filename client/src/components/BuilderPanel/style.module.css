@@ -79,6 +79,7 @@
   background: linear-gradient(90deg, #77645c 20%, #77645c);
   border: none;
   border-radius: 12px 12px 0px 0px;
+  cursor: pointer;
 }
 
 .mainPanel {
@@ -140,6 +141,7 @@
   border-radius: 6px;
   background-color: #ffffff9f;
   color: black;
+  cursor: pointer;
 }
 
 

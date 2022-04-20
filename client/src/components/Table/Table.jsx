@@ -44,14 +44,14 @@ export default function Table() {
 
     function generateHundler (e, obj) {
       e.preventDefault();
-      console.log('zachemmmmmmmmmmmmmmmmmmmm');
+      // console.log('zachemmmmmmmmmmmmmmmmmmmm');
       const { row, coll } = obj;
       let table = [];
       let tdId = 1
       for (let i = 0; i < row; i++ ) {
         let oneRow = [];
         for (let j = 0; j < coll; j++) {
-          oneRow.push({ id: tdId, bgImg: '../images/Sand_1.jpg'});
+          oneRow.push({ id: tdId, bgImg: '../images/Stone_x4_1.jpg'});
           tdId++;
         }
         table.push(oneRow);
@@ -62,7 +62,7 @@ export default function Table() {
 
     function generateRandomHundler(e, obj) {
       e.preventDefault();
-      console.log('zachemmmmmmmmmmmmmmmmmmmm');
+      // console.log('zachemmmmmmmmmmmmmmmmmmmm');
       const { row, coll } = obj;
       let table = [];
       let tdId = 1

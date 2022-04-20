@@ -189,6 +189,7 @@ export default function GamePage() {
   return (
     <>
       {/* <div className={style.topPanel}>top panel</div> */}
+      {/* <div className={style.mainmain}> */}
       <div className={style.gamePage}>
         {
           localStorage.getItem("isGM") === 'true' ?
@@ -200,7 +201,9 @@ export default function GamePage() {
                 </div>
               </div>
             ) : (
-              <span>you are not GM</span>
+              <div className={style.leftSide}>
+                <span>you are not GM</span>
+              </div>
             )
         }
 
@@ -242,6 +245,7 @@ export default function GamePage() {
           <GameMasterPanel getImgSrcHundler={getImgSrcHundler} /> :
           <PlayerPanel />
       }
+      {/* </div> */}
     </>
   )
 }
