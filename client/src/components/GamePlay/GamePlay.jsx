@@ -23,7 +23,7 @@ export default function GamePlay() {
               <li>Взаимодействие с окружением, NPC и сопартийцами в свободной форме озвучиванием намерений, иногда с проверками броском кубов по решению ГМ </li>
               <li>Решения принимаются самолично, либо в формате диалога или обсуждения, если ГМ не утвердил обратное</li>
             </ul>
-            <p><span className={style.properties}><p>Более развёрнутые правила вы можете найти <a href="https://www.igromania.ru/article/31235/Chto_takoe_Dungeons_and_Dragons_i_kak_v_yeto_igrat._Kratkiy_spravochnik_dlya_novichkov.html" target="_blank">здесь!</a> Очень много текста! </p></span></p>
+            <p><span className={style.properties}><p>Более развёрнутые правила вы можете найти <a href="https://www.igromania.ru/article/31235/Chto_takoe_Dungeons_and_Dragons_i_kak_v_yeto_igrat._Kratkiy_spravochnik_dlya_novichkov.html" target="_blank">здесь!</a> Очень много текста!!! </p></span></p>
           </div>
         </div>
         <div className={style.sectionOne}>
