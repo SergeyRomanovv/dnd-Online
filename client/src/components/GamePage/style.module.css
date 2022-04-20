@@ -11,14 +11,14 @@
 .leftSide {
   /* border: 1px solid black; */
   min-height: 100vh;
-  width: 10%;
-  background: linear-gradient(90deg, #ffffff9a, #ffffff59);
+  width: 13%;
+  background-image: url('../../../public/Left_1.png');
 }
 
 .mainSide {
   /* border: 1px solid black; */
   min-height: 100vh;
-  width: 77%;
+  width: 74%;
   text-align: center;
 }
 
@@ -26,7 +26,8 @@
   /* border: 1px solid black; */
   min-height: 100vh;
   width: 13%;
-  background-color: #3e3c4d;
+  /* background-color: #3e3c4d; */
+  background-image: url('../../../public/Right_1.png');
 }
 
 .topPanel {

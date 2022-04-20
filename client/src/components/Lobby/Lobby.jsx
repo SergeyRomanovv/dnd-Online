@@ -31,7 +31,9 @@ function Lobby() {
     <>
       <div className={style.lobbyBox}>
         <div className={style.heroesBox}>
+          <div className={style.h1Box}>
           <h1>Select a character</h1>
+          </div>
           <div className={style.imgBox}>
             {heroes.map(pic => <div key={pic.id} id={pic.id} className={style.oneHero}> <span>{pic.title}</span> <img src={pic.url} alt={pic.url} tabIndex="0" title={pic.title} onClick={getHeroHundler} /> </div> )}
           </div>
