@@ -191,21 +191,33 @@ export default function GamePage() {
       {/* <div className={style.topPanel}>top panel</div> */}
       {/* <div className={style.mainmain}> */}
       <div className={style.gamePage}>
-        {
-          localStorage.getItem("isGM") === 'true' ?
-            (
-              <div className={style.leftSide}>
+        <div className={style.leftSide}>
+          {<div className={style.diceMainBox}>
+            {rollResult.user}
+            {rollResult.roll?.d4?.length > 0 ? <div>D4: {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d6?.length > 0 ? <div>D6: {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d8?.length > 0 ? <div>D8: {rollResult.roll.d8.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d10?.length > 0 ? <div>D10: {rollResult.roll.d10.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d100?.length > 0 ? <div>D100: {rollResult.roll.d100.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d12?.length > 0 ? <div>D12: {rollResult.roll.d12.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d20?.length > 0 ? <div>D20: {rollResult.roll.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+          </div>}
+          {
+            localStorage.getItem("isGM") === 'true' ?
+              (
+                // <div className={style.leftSide}>
                 <div className={style.chooseBoard}>
                   <p>chosse board</p>
                   {allBoards.map((board) => <button key={board.id} onClick={() => getGameHundler(board.id)}>{board.title}</button>)}
                 </div>
-              </div>
-            ) : (
-              <div className={style.leftSide}>
+                // </div>
+              ) : (
+                // <div className={style.leftSide}>
                 <span>you are not GM</span>
-              </div>
-            )
-        }
+                // </div>
+              )
+          }
+        </div>
 
 
 
@@ -227,7 +239,7 @@ export default function GamePage() {
           </div>
         </div>
         <div className={style.rightSide}>
-          {<div>
+          {/* {<div>
             {rollResult.user}
             {rollResult.roll?.d4?.length > 0 ? <div>D4: {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
             {rollResult.roll?.d6?.length > 0 ? <div>D6: {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
@@ -236,7 +248,7 @@ export default function GamePage() {
             {rollResult.roll?.d100?.length > 0 ? <div>D100: {rollResult.roll.d100.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
             {rollResult.roll?.d12?.length > 0 ? <div>D12: {rollResult.roll.d12.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
             {rollResult.roll?.d20?.length > 0 ? <div>D20: {rollResult.roll.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-          </div>}
+          </div>} */}
           <Room />
         </div>
       </div>
