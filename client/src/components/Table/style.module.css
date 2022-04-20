@@ -1,5 +1,6 @@
 .gameBox {
     margin-top: 10px;
+    margin-bottom: 200px;
     display: flex;
     justify-content: center;
 }
@@ -44,8 +45,9 @@
 }
 
 .tableBox td {
-  width: 70px;
   height: 70px;
+  width: 70px;
+ 
   border: 1px solid #4e4e4e;
 }
 

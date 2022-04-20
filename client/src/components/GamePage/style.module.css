@@ -133,9 +133,12 @@
 
 .gameBox {
   margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 200px;
   display: flex;
   justify-content: center;
+  overflow-x: scroll;
 }
 
 .tableBox {
@@ -143,10 +146,11 @@
   -webkit-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
   -moz-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
   box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+  margin-bottom: 20px;
 }
 
-.tableBox td {
-  width: 70px;
+.tableBox tr td {
+  min-width: 70px;
   height: 70px;
   border: 1px solid #4e4e4e;
 }
