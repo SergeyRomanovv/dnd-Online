@@ -35,7 +35,7 @@ function NavBar() {
         <AppBar className={style.mainBox} position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <Link className={style.link} to='/'><Button color="inherit">DUNGEON ONLINE</Button></Link>
+              <Link className={style.link} to='/'><Button color="inherit">DUNGEON ONLINE <img src="монстр.png" alt="..." /></Button></Link>
             </Typography>
             {user ? 
             <>
