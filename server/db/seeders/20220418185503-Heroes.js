@@ -36,6 +36,18 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          title: 'Warrior',
+          url: '../images/Heroes/Dwarf_1.png',
+          createdAt: new Date(),  
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Wizard',
+          url: '../images/Heroes/Wizard_1.png',
+          createdAt: new Date(),  
+          updatedAt: new Date(),
+        },
+        {
           title: 'Sorcerer',
           url: '../images/Heroes/Sorcerer.png',
           createdAt: new Date(),  
