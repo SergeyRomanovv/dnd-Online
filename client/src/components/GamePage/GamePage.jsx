@@ -11,14 +11,12 @@ let socket;
 export default function GamePage() {
   const oneGame = useSelector(state => state.oneGame);
   const playerHero = useSelector((store) => store.selectHero);
-  // const rerenderMap = useSelector(state => state.rerenderMap)
   const rollState = useSelector((store) => store.rollDice);
   const dispatch = useDispatch();
   const [allBoards, setAllBoards] = useState([]);
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
   const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
-  const [togle, setTogle] = useState({ view: style.footerPanel1, icon: 'fa-solid fa-chevron-down' });
 
   // ! ---------------------------Soket IO------------------------------------------
   const [user, setUser] = useState("");
@@ -96,7 +94,6 @@ export default function GamePage() {
   useEffect(() => {
     socket.on('sendRollFromServer', data => {
       setRollResult(data);
-      console.log(rollResult);
     });
   }, [rollState]);
 
@@ -178,18 +175,8 @@ export default function GamePage() {
     setImgSrc(e.target.alt);
   }
 
-  // function togleHundler() {
-  //   if (togle.view === style.footerPanel) {
-  //     setTogle({ view: style.footerPanel1, icon: 'fa-solid fa-chevron-down' });
-  //   } else {
-  //     setTogle({ view: style.footerPanel, icon: 'fa-solid fa-chevron-up' });
-  //   }
-  // }
-
   return (
     <>
-      {/* <div className={style.topPanel}>top panel</div> */}
-      {/* <div className={style.mainmain}> */}
       <div className={style.gamePage}>
         <div className={style.leftSide}>
           {<div className={style.diceMainBox}>
@@ -205,16 +192,12 @@ export default function GamePage() {
           {
             localStorage.getItem("isGM") === 'true' ?
               (
-                // <div className={style.leftSide}>
                 <div className={style.chooseBoard}>
                   <h3 style={{color: '#ffffff'}}>Game Boards</h3>
                   {allBoards.map((board) => <button key={board.id} onClick={() => getGameHundler(board.id)}>{board.title}</button>)}
                 </div>
-                // </div>
               ) : (
-                // <div className={style.leftSide}>
-                <span>you are not GM</span>
-                // </div>
+                <span></span>
               )
           }
         </div>
@@ -239,16 +222,6 @@ export default function GamePage() {
           </div>
         </div>
         <div className={style.rightSide}>
-          {/* {<div>
-            {rollResult.user}
-            {rollResult.roll?.d4?.length > 0 ? <div>D4: {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {rollResult.roll?.d6?.length > 0 ? <div>D6: {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {rollResult.roll?.d8?.length > 0 ? <div>D8: {rollResult.roll.d8.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {rollResult.roll?.d10?.length > 0 ? <div>D10: {rollResult.roll.d10.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {rollResult.roll?.d100?.length > 0 ? <div>D100: {rollResult.roll.d100.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {rollResult.roll?.d12?.length > 0 ? <div>D12: {rollResult.roll.d12.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {rollResult.roll?.d20?.length > 0 ? <div>D20: {rollResult.roll.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-          </div>} */}
           <Room />
         </div>
       </div>
@@ -257,7 +230,6 @@ export default function GamePage() {
           <GameMasterPanel getImgSrcHundler={getImgSrcHundler} /> :
           <PlayerPanel />
       }
-      {/* </div> */}
     </>
   )
 }

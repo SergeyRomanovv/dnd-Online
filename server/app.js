@@ -68,7 +68,7 @@ io.on('connect', (socket) => {
   
   socket.on('sendRerenderMapToServer', (data) => {
     const user = lobbyService.getUser(socket.id);
-    console.log(data)
+    console.log(data);
     io.to(user.room).emit('sendRerenderMapFromServer', { user: user.user, map: data.rerenderMap});
   });
 
