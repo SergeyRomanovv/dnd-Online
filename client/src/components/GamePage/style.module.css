@@ -175,6 +175,8 @@
   width: 100%;
   min-height: 30vh;
   color: rgba(255, 255, 255, 0.808);
+  background-color: #383644ee;
+  border-radius: 12px;
   /* display: flex;
   flex-direction: column;
   justify-content: start; */
@@ -188,7 +190,16 @@
 }
 
 .diceRes {
-  text-align: left;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+} 
+
+.diceRes strong {
+  padding: 6px;
+  background-color: rgb(146, 39, 39);
+  border-radius: 12px;
 } 
 
 .headerspan {
