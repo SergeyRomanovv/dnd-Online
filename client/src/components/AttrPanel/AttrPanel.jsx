@@ -41,7 +41,7 @@ export default function Proverka({getImgSrcHundler}) {
           {attrCategories.map(cat => <button id={cat.id} key={cat.id} onClick={() => getImagesHundler(cat.id)} >{cat.title}</button> )}
         </div>
         <div className={style.attrImagesPanel}>
-          {attrImgToggle ? attrImages.map(pic => <img className={attrImgToggle} src={pic.url} alt={pic.url} tabindex="0" onClick={getImgSrcHundler} /> ) : <div className={style.attrEmptyDiv}></div> }
+          {attrImgToggle ? attrImages.map(pic => <img className={attrImgToggle} src={pic.url} alt={pic.url} tabIndex="0" onClick={getImgSrcHundler} /> ) : <div className={style.attrEmptyDiv}></div> }
         </div>
       </div>
     </div>

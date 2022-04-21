@@ -18,7 +18,7 @@ export default function PlayerPanel() {
   return (
     <div className={playerPanelTogle.view}>
       <div>
-      <button onClick={playerPanelTogleHundler} className={style.playerToggleBtn}><span className={style.attrIconText}>Player Panel</span> <i class={playerPanelTogle.icon}></i></button>
+      <button onClick={playerPanelTogleHundler} className={style.playerToggleBtn}><span className={style.attrIconText}>Player Panel</span> <i className={playerPanelTogle.icon}></i></button>
       </div>
       <div className={style.mainPanel}>
         <RollDice />
