@@ -29,6 +29,7 @@ export default function useWebRTC(roomID) {
       peerConnections.current[peerID] = new RTCPeerConnection({
         iceServers: freice(),
       });
+      peerConnections.current[peerID].proxy_only = false; // ! Если не заработает Удалить
       peerConnections.current[peerID].onicecandidate = (event) => {
         if (event.candidate) {
           socket.emit(ACTIONS.RELAY_ICE, {

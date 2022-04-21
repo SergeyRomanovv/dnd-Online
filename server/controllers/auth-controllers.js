@@ -3,13 +3,11 @@ const {validationResult} = require('express-validator');
 const ApiError = require('../exceptions/api-err');
 
 async function registration(req, res, next) {
-  console.log(req.body);
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return next(ApiError.BadRequest('Ошибка при валидации', errors.array()));
     }
-    console.log(req.body);
     const {userName, email, password} = req.body;
     const userData = await UserService.registration(userName, email, password);
     res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
