@@ -14,7 +14,6 @@ export default function useWebRTC(roomID) {
       updateClients((list) => [...list, newClient], cb);
     }
   }, [clients, updateClients]);
-  console.log(clients);
 
   const peerConnections = useRef({});
   const localMediaStream = useRef(null);
@@ -23,7 +22,6 @@ export default function useWebRTC(roomID) {
   });
 
   useEffect(() => {
-    console.log('useEffect', clients);
     async function handleNewPeer({peerID, createOffer}) {
       if (peerID in peerConnections.current) {
         return console.warn(`Alredy connected to ${peerID}`);
