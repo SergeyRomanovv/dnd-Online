@@ -78,7 +78,7 @@ export default function BuilderPanel() {
   return (
     <div className={togle.view}>
     <div>
-      <button onClick={togleHundler} className={style.toggleBtn}><span className={style.iconText}>Builder Panel</span> <i class={togle.icon}></i></button>
+      <button onClick={togleHundler} className={style.toggleBtn}><span className={style.iconText}>Builder Panel</span> <i className={togle.icon}></i></button>
     </div>
     <div className={style.panel}>
       <div className={style.mainPanel}>
