@@ -22,7 +22,7 @@ function NavBar() {
   useEffect(() => {
     axios.post('http://localhost:3001/userstatus', { user })
       .then((res) => {
-        console.log('55555555',res.data)
+        // console.log('55555555',res.data)
         setGmaster(res.data.isGameMaster)
         localStorage.setItem('isGM', res.data.isGameMaster)
       })
