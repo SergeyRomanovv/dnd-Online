@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import useStateWithCallback from "./useStateWithCallback";
 import socket from "../socket/videochatSocket";
 import ACTIONS from "../socket/actions";
@@ -15,7 +15,6 @@ export default function useWebRTC(roomID) {
     }
   }, [clients, updateClients]);
 
-
   const peerConnections = useRef({});
   const localMediaStream = useRef(null);
   const peerMediaElements = useRef({
@@ -30,6 +29,7 @@ export default function useWebRTC(roomID) {
       peerConnections.current[peerID] = new RTCPeerConnection({
         iceServers: freice(),
       });
+      peerConnections.current[peerID].proxy_only = false; // ! Если не заработает Удалить
       peerConnections.current[peerID].onicecandidate = (event) => {
         if (event.candidate) {
           socket.emit(ACTIONS.RELAY_ICE, {

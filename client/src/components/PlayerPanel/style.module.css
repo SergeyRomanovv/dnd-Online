@@ -1,10 +1,9 @@
 .playerPanel {
   width: 100%;
-  background-color: red;
   position: fixed;
   bottom: 0;
   animation-name: example;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -15,11 +14,11 @@
 
 .playerPanel1 {
   width: 100%;
-  background-color: blue;
+  background-color: #ffffff00;
   position: fixed;
   bottom: 0;
   animation-name: example1;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -29,11 +28,15 @@
 }
 
 .mainPanel {
-  background-color: aqua;
+  background: linear-gradient(90deg, #4f4c64 20%, #635f80);
 }
 
 .playerToggleBtn {
-  width: 100%;
+  color: #ffffff;
+  width: 15%;
   padding: 5px;
-  background-color: chartreuse;
+  background-color: #4f4c64;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px 12px 0px 0px;
 }

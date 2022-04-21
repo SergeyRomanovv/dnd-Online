@@ -4,13 +4,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* background: linear-gradient(90deg, #77645c 20%, #aa8a6f); */
-  background-color: #ffffff00;
+  /* background: linear-gradient(90deg, #4f4c64 20%, #635f80); */
+  /* background-color: #ffffff00; */
   position: fixed;
   bottom: 0;
   animation-name: example;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  /* background-image: url('../../../public/Bottom_3.png');
+  background-size: 100% 100%; */
 }
 
 @keyframes example {
@@ -24,13 +26,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* background: linear-gradient(90deg, #77645c 20%, #aa8a6f); */
-  background-color: #ffffff00;
   position: fixed;
   bottom: 0;
   animation-name: example1;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  /* background: linear-gradient(90deg, #4f4c64 20%, #635f80); */
+  /* background-image: url('../../../public/Bottom_3.png');
+  background-size: 100% 100%; */
 }
 
 @keyframes example1 {
@@ -41,7 +44,8 @@
 .doubleBox {
   position: relative;
   height: 168px;
-  background: linear-gradient(90deg, #77645c 20%, #aa8a6f);
+  background: linear-gradient(90deg, #4f4c64 20%, #635f80);
+  /* background-color: #ffffff00; */
 }
 
 
@@ -111,13 +115,14 @@
   width: 12%;
   border-radius: 12px 12px 0px 0px;
   /* background-color: chartreuse; */
-  background-color: #77645c;
+  background-color: #4f4c64;
   padding: 10px;
   border: none;
+  cursor: pointer;
 } 
 
 .btns {
-  background: linear-gradient(90deg, #77645c 20%, #aa8a6f);
+  background: linear-gradient(90deg, #4f4c64 20%, #635f80);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -130,4 +135,5 @@
   border-radius: 6px;
   background-color: #ffffff9f;
   color: black;
+  cursor: pointer;
 }

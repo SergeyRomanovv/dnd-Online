@@ -1,13 +1,11 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import style from './style.module.css'
-import {useSelector, useDispatch} from 'react-redux'
-import BuilderPanel from '../BuilderPanel/BuilderPanel'
-import RollDice from '../RollDice/RollDice';
+import React from 'react';
+import { useState, useEffect } from 'react';
+import style from './style.module.css';
+import {useSelector, useDispatch} from 'react-redux';
+import BuilderPanel from '../BuilderPanel/BuilderPanel';
 import axios from 'axios';
 
 export default function Table() {
-    console.log('Table')
     const dispatch = useDispatch();
     const gameMap = useSelector((store) => store.gameMap);
     const imgSrc = useSelector(store => store.tempImg);
@@ -18,19 +16,15 @@ export default function Table() {
     useEffect(() => {
       axios.get('http://localhost:3001/builder')
         .then((res) => {
-          setBlockItems(res.data)
-        })
+          setBlockItems(res.data);
+        });
     }, []);
-
-    // console.log('5555555555555555555555555555', blockItems);
     
     function changeHandler (e) {
-        const x = e.target.parentNode.rowIndex
-        const y = e.target.cellIndex
-        // console.log('xy====>', x, y)
-        dispatch({type: 'EDIT_MAP_EL', payload: {x, y, imgSrc}})
-        setState((pre) => [...gameMap])
-        // console.log('afterFunc=======>', gameMap)
+        const x = e.target.parentNode.rowIndex;
+        const y = e.target.cellIndex;
+        dispatch({type: 'EDIT_MAP_EL', payload: {x, y, imgSrc}});
+        setState((pre) => [...gameMap]);
     }
 
     function sizeHundler (e) {
@@ -40,32 +34,27 @@ export default function Table() {
       setSize((prev) => ({...prev, [e.target.name]: e.target.value}));
     }
 
-    console.log('generate', size);
-
     function generateHundler (e, obj) {
       e.preventDefault();
-      console.log('zachemmmmmmmmmmmmmmmmmmmm');
       const { row, coll } = obj;
       let table = [];
-      let tdId = 1
+      let tdId = 1;
       for (let i = 0; i < row; i++ ) {
         let oneRow = [];
         for (let j = 0; j < coll; j++) {
-          oneRow.push({ id: tdId, bgImg: '../images/Sand_1.jpg'});
+          oneRow.push({ id: tdId, bgImg: '../images/Stone_x4_1.jpg'});
           tdId++;
         }
         table.push(oneRow);
       }
-      dispatch({ type: 'GENERATE_BOARD', payload: table})
-      // setSize({});
+      dispatch({ type: 'GENERATE_BOARD', payload: table});
     }
 
     function generateRandomHundler(e, obj) {
       e.preventDefault();
-      console.log('zachemmmmmmmmmmmmmmmmmmmm');
       const { row, coll } = obj;
       let table = [];
-      let tdId = 1
+      let tdId = 1;
       for (let i = 0; i < row; i++ ) {
         let oneRow = [];
         for (let j = 0; j < coll; j++) {
@@ -75,21 +64,19 @@ export default function Table() {
         }
         table.push(oneRow);
       }
-      dispatch({ type: 'GENERATE_BOARD', payload: table})
+      dispatch({ type: 'GENERATE_BOARD', payload: table});
     }
-
-    console.log('block items', blockItems);
 
   return (
     <div className={style.mainBox}>
-      <div>
+      <div className={style.mainConteiner}>
         <form className={style.generateBox}>
-          <label htmlFor="row">rows</label>
+          <label htmlFor="row">ROWS</label>
           <input type="number" id='row' name="row" value={size.row || ''} min='1' max='16' onChange={(e) => sizeHundler(e)} />
-          <label htmlFor="coll">colls</label>
+          <label htmlFor="coll">COLLS</label>
           <input type="number" id='coll' name="coll" value={size.coll || ''} min='1' max='16' onChange={(e) => sizeHundler(e)} />
-          <button onClick={(e) => generateHundler (e, size)}>Generate</button>
-          <button onClick={(e) => generateRandomHundler (e, size)}>Generate Random</button>
+          <button onClick={(e) => generateHundler (e, size)}>GENERATE</button>
+          <button onClick={(e) => generateRandomHundler (e, size)}>GENERATE RANDOM</button>
         </form>
       </div>
       <div className={style.gameBox}>
@@ -97,7 +84,7 @@ export default function Table() {
       <thead></thead>
       <tbody>
         {
-        gameMap.map(e => <tr>{e.map(el => <td className={style.bgImg} style={{backgroundImage: `url(${el.bgImg})`}}></td>)}</tr>)
+        gameMap.map(e => <tr>{e.map(el => <td key={el.id} className={style.bgImg} style={{backgroundImage: `url(${el.bgImg})`}}></td>)}</tr>)
         }
       </tbody>
       <tfoot></tfoot>

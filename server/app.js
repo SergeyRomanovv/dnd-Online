@@ -14,6 +14,7 @@ const dbConnectCheck = require("./db/dbConnectCheck");
 const lobbyService = require("./service/lobby-service");
 const attributesRouter = require('./routes/attributesRouter');
 const heroesRouter = require('./routes/heroesRouter');
+const userStatusRouter = require('./routes/userStatusRouter');
 
 // Импортируем созданный в отдельный файлах рутеры.
 const app = express();
@@ -36,6 +37,7 @@ app.use("/builder", builderRouter);
 app.use("/boards", boardsRouter);
 app.use('/attributies', attributesRouter);
 app.use('/heroes', heroesRouter);
+app.use('/userstatus', userStatusRouter);
 
 app.use(errormiddleware);
 
@@ -66,7 +68,7 @@ io.on('connect', (socket) => {
   
   socket.on('sendRerenderMapToServer', (data) => {
     const user = lobbyService.getUser(socket.id);
-    console.log(data)
+    console.log(data);
     io.to(user.room).emit('sendRerenderMapFromServer', { user: user.user, map: data.rerenderMap});
   });
 

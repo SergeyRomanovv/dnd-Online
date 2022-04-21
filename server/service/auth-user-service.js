@@ -13,6 +13,10 @@ class UserService {
     if (candidate) {
       throw ApiError.BadRequest(`Пользователь с почтовым адресом ${email} уже существует`);
     }
+    const candidateTwo = await User.findOne({where: { name: userName }, raw: true});
+    if (candidateTwo) {
+      throw ApiError.BadRequest(`Пользователь с таким логином ${userName} уже существует`);
+    }
     const hashPassword = await bcrypt.hash(password, 5);
     const activationLink = uuid.v4();
     const user = await User.create({name: userName, email, password: hashPassword, activationLink});

@@ -41,6 +41,21 @@ module.exports = {
           createdAt: new Date(),  
           updatedAt: new Date(),
         },
+        {
+          title: 'Prem Grass',
+          createdAt: new Date(),  
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Prem Stone',
+          createdAt: new Date(),  
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Prem Stream',
+          createdAt: new Date(),  
+          updatedAt: new Date(),
+        },
       ]
     /**
      * Add seed commands here.

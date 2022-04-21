@@ -11,14 +11,12 @@ let socket;
 export default function GamePage() {
   const oneGame = useSelector(state => state.oneGame);
   const playerHero = useSelector((store) => store.selectHero);
-  // const rerenderMap = useSelector(state => state.rerenderMap)
   const rollState = useSelector((store) => store.rollDice);
   const dispatch = useDispatch();
   const [allBoards, setAllBoards] = useState([]);
   const [gameBoardCoordinates, setGameBoardCoordinates] = useState({});
   const [moveAttr, setMoveAttr] = useState({});
   const [imgSrc, setImgSrc] = useState('');
-  const [togle, setTogle] = useState({ view: style.footerPanel1, icon: 'fa-solid fa-chevron-down' });
 
   // ! ---------------------------Soket IO------------------------------------------
   const [user, setUser] = useState("");
@@ -96,7 +94,6 @@ export default function GamePage() {
   useEffect(() => {
     socket.on('sendRollFromServer', data => {
       setRollResult(data);
-      console.log(rollResult);
     });
   }, [rollState]);
 
@@ -178,31 +175,32 @@ export default function GamePage() {
     setImgSrc(e.target.alt);
   }
 
-  // function togleHundler() {
-  //   if (togle.view === style.footerPanel) {
-  //     setTogle({ view: style.footerPanel1, icon: 'fa-solid fa-chevron-down' });
-  //   } else {
-  //     setTogle({ view: style.footerPanel, icon: 'fa-solid fa-chevron-up' });
-  //   }
-  // }
-
   return (
     <>
-      {/* <div className={style.topPanel}>top panel</div> */}
       <div className={style.gamePage}>
-        {
-          localStorage.getItem("isGM") === 'true' ?
-            (
-              <div className={style.leftSide}>
+        <div className={style.leftSide}>
+          {<div className={rollResult.roll !== undefined ? style.diceMainBox : style.diceMainBoxNone}>
+            <div className={style.usersNames}><span><strong>{rollResult.user}</strong></span></div>
+            {rollResult.roll?.d4?.length > 0 ? <div className={style.diceRes}><strong>D4:</strong> {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d6?.length > 0 ? <div className={style.diceRes}><strong>D6:</strong> {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d8?.length > 0 ? <div className={style.diceRes}><strong>D8:</strong> {rollResult.roll.d8.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d10?.length > 0 ? <div className={style.diceRes}><strong>D10:</strong> {rollResult.roll.d10.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d100?.length > 0 ? <div className={style.diceRes}><strong>D100:</strong> {rollResult.roll.d100.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d12?.length > 0 ? <div className={style.diceRes}><strong>D12:</strong> {rollResult.roll.d12.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+            {rollResult.roll?.d20?.length > 0 ? <div className={style.diceRes}><strong>D20:</strong> {rollResult.roll.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
+          </div>}
+          {
+            localStorage.getItem("isGM") === 'true' ?
+              (
                 <div className={style.chooseBoard}>
-                  <p>chosse board</p>
+                  <h3 style={{color: '#ffffff'}}>Game Boards</h3>
                   {allBoards.map((board) => <button key={board.id} onClick={() => getGameHundler(board.id)}>{board.title}</button>)}
                 </div>
-              </div>
-            ) : (
-              <span>you are not GM</span>
-            )
-        }
+              ) : (
+                <span></span>
+              )
+          }
+        </div>
 
 
 
@@ -213,10 +211,10 @@ export default function GamePage() {
               <thead></thead>
               <tbody>
                 {renderMap.length ?
-                  renderMap.map(e => <tr>{e.map(el => <td tabindex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
+                  renderMap.map(e => <tr>{e.map(el => <td tabIndex="0" className={style.bgImg} style={{ backgroundImage: `url(${el.bgImg})` }}>{el.attr
                     ? <img src={el.attr} alt={el.attr} style={{ backgroundColor: '#ffffff00', width: '65px' }} />
                     : <span></span>}</td>)}</tr>)
-                  : <span>Chosse a game from left side</span>
+                  : <span className={style.headerspan}>Chosse a game field from left side</span>
                 }
               </tbody>
               <tfoot></tfoot>
@@ -224,12 +222,6 @@ export default function GamePage() {
           </div>
         </div>
         <div className={style.rightSide}>
-          {<div>
-            {rollResult.user}
-            {rollResult.roll?.d4?.length > 0 ? <div>D4: {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {rollResult.roll?.d6?.length > 0 ? <div>D6: {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-            {rollResult.roll?.d20?.length > 0 ? <div>D20: {rollResult.roll.d20.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
-          </div>}
           <Room />
         </div>
       </div>
