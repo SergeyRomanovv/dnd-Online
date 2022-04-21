@@ -23,7 +23,7 @@ export default function GamePlay() {
               <li>Взаимодействие с окружением, NPC и сопартийцами в свободной форме озвучиванием намерений, иногда с проверками броском кубов по решению ГМ </li>
               <li>Решения принимаются самолично, либо в формате диалога или обсуждения, если ГМ не утвердил обратное</li>
             </ul>
-            <p><span className={style.properties}><p>Более развёрнутые правила вы можете найти <a href="https://www.igromania.ru/article/31235/Chto_takoe_Dungeons_and_Dragons_i_kak_v_yeto_igrat._Kratkiy_spravochnik_dlya_novichkov.html" target="_blank">здесь!</a> Очень много текста!!! </p></span></p>
+            <p><span className={style.properties}>Более развёрнутые правила вы можете найти <a href="https://www.igromania.ru/article/31235/Chto_takoe_Dungeons_and_Dragons_i_kak_v_yeto_igrat._Kratkiy_spravochnik_dlya_novichkov.html" target="_blank">здесь!</a> Очень много текста!!! </span></p>
           </div>
         </div>
         <div className={style.sectionOne}>
@@ -31,12 +31,11 @@ export default function GamePlay() {
           <div className={style.instruction}>
             <p><span className={style.properties}>Выставить персонажа:</span> - <span className={style.values}>двойной клик по полю.</span></p>
             <p><span className={style.properties}>Удалить персонажа:</span> - <span className={style.values}>alt+ click</span></p>
-            <p><span className={style.properties}>Передвижение персонажа :</span>
+            <p><span className={style.properties}>Передвижение персонажа :</span></p>
               <ol>
                 <li><span className={style.properties}>Выбор персонажа:</span> - <span className={style.values}>shift + click</span></li>
                 <li><span className={style.properties}>Новая клетка для персонажа:</span> - <span className={style.values}>ctrl + click</span></li>
               </ol>
-            </p>
           </div>
         </div>
         <div className={style.sectionTwo}>

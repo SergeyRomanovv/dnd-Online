@@ -109,7 +109,7 @@ export default function BuilderPanel() {
           {categories.map(cat => <button id={cat.id} key={cat.id} onClick={() => getImagesHundler(cat.id)} >{cat.title}</button> )}
         </div>
         <div className={style.imagesPanel}>
-          {imgToggle ? images.map(pic => <img className={imgToggle} src={pic.url} alt={pic.url} tabindex="0" onClick={getSrcHundler} /> ) : <div className={style.emptyDiv}></div> }
+          {imgToggle ? images.map(pic => <img key={pic.id} className={imgToggle} src={pic.url} alt={pic.url} tabIndex="0" onClick={getSrcHundler} /> ) : <div className={style.emptyDiv}></div> }
         </div>
       </div>
       <div className={style.btnBox}>

@@ -16,6 +16,18 @@ function NavBar() {
   const user = useSelector(store => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [gmaster, setGmaster] = useState(localStorage.getItem("isGM"));
+
+  useEffect(() => {
+    axios.post('http://localhost:3001/userstatus', { user })
+      .then((res) => {
+        console.log('55555555',res.data)
+        setGmaster(res.data.isGameMaster)
+        localStorage.setItem('isGM', res.data.isGameMaster)
+      })
+  }, [user]);
+  
   const logout = async (e) => {
     e.preventDefault();
     dispatch(submitLogout());
@@ -25,7 +37,9 @@ function NavBar() {
   const statusHundler = () => {
     axios.patch('http://localhost:3001/userstatus', { user })
       .then((res) => {
-        console.log(res.data)
+        console.log('fddsgdfhfgjhuujytyrerewrtewrt', res.data)
+        setGmaster(res.data.isGameMaster)
+        localStorage.setItem('isGM', res.data.isGameMaster)
       })
   }
 
@@ -40,7 +54,7 @@ function NavBar() {
             {user ? 
             <>
             <Link className={style.link} to='/builder'><Button color="inherit">BUILDER</Button></Link>
-            { localStorage.getItem("isGM") === 'true' ?
+            { gmaster ?
               <Link onClick={() => statusHundler()} className={style.link} to='/'><Button color="inherit">BECOME PLAYER </Button></Link> :
               <Link onClick={() => statusHundler()} className={style.link} to='/'><Button color="inherit">BECOME GAMEMASTER</Button></Link>
             }
