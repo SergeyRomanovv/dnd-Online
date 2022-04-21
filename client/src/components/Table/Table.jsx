@@ -99,7 +99,7 @@ export default function Table() {
       <thead></thead>
       <tbody>
         {
-        gameMap.map(e => <tr>{e.map(el => <td className={style.bgImg} style={{backgroundImage: `url(${el.bgImg})`}}></td>)}</tr>)
+        gameMap.map(e => <tr>{e.map(el => <td key={el.id} className={style.bgImg} style={{backgroundImage: `url(${el.bgImg})`}}></td>)}</tr>)
         }
       </tbody>
       <tfoot></tfoot>

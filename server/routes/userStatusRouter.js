@@ -8,8 +8,22 @@ router.patch('/', async (req, res) => {
     const status = !(oneUser.isGameMaster);
     await User.update({ isGameMaster: status }, {
       where: { name }
-     }); 
-    res.sendStatus(200);
+     });
+    const user = await User.findOne({ where: { name }, raw: true });
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    console.log('pochemuuuuu', req.body);
+    const name = req.body.user;
+    const user = await User.findOne({ where: { name }, raw: true });
+    console.log('userrrrrrr', user);
+    res.json(user);
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
