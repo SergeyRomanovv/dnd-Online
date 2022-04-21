@@ -179,7 +179,7 @@ export default function GamePage() {
     <>
       <div className={style.gamePage}>
         <div className={style.leftSide}>
-          {<div className={style.diceMainBox}>
+          {<div className={rollResult.roll !== undefined ? style.diceMainBox : style.diceMainBoxNone}>
             <div className={style.usersNames}><span><strong>{rollResult.user}</strong></span></div>
             {rollResult.roll?.d4?.length > 0 ? <div className={style.diceRes}><strong>D4:</strong> {rollResult.roll.d4.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
             {rollResult.roll?.d6?.length > 0 ? <div className={style.diceRes}><strong>D6:</strong> {rollResult.roll.d6.sort((a, b) => a - b).map(e => `${e} `)}</div> : null}
