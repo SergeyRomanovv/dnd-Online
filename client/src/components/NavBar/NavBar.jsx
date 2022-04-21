@@ -17,15 +17,14 @@ function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [gmaster, setGmaster] = useState(localStorage.getItem("isGM"));
+  const [gmaster, setGmaster] = useState(String(localStorage.getItem("isGM")));
 
   useEffect(() => {
     axios.post('http://localhost:3001/userstatus', { user })
       .then((res) => {
-        // console.log('55555555',res.data)
-        setGmaster(res.data.isGameMaster)
-        localStorage.setItem('isGM', res.data.isGameMaster)
-      })
+        setGmaster(String(res.data.isGameMaster));
+        localStorage.setItem('isGM', res.data.isGameMaster);
+      });
   }, [user]);
   
   const logout = async (e) => {
@@ -37,11 +36,10 @@ function NavBar() {
   const statusHundler = () => {
     axios.patch('http://localhost:3001/userstatus', { user })
       .then((res) => {
-        console.log('fddsgdfhfgjhuujytyrerewrtewrt', res.data)
-        setGmaster(res.data.isGameMaster)
-        localStorage.setItem('isGM', res.data.isGameMaster)
-      })
-  }
+        setGmaster(res.data.isGameMaster);
+        localStorage.setItem('isGM', res.data.isGameMaster);
+      });
+  };
 
   return (
     <>

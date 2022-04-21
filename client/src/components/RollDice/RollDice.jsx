@@ -6,9 +6,6 @@ import style from './style.module.css';
 export default function RollDice() {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
-  const [dices, setDices] = useState({});
-
-  const [attrMasterTogle, setAttrMasterTogle] = useState({ view: style.masterPanel1, icon: 'fa-solid fa-chevron-down' });
 
   const changeHandler = (e) => {
     if (e.target.value < 0) e.target.value = 0;
@@ -64,20 +61,8 @@ export default function RollDice() {
       }
     }
     dispatch({ type: 'ROLL_DICE', payload: { d4: sumd4, d6: sumd6, d8: sumd8, d10: sumd10, d100: sumd100, d12: sumd12, d20: sumd20 } });
-    // setDices((prev) => ({ ...prev, d4: sumd4, d6: sumd6, d20: sumd20 }));
     setInputs({});
   };
-
-
-  // function attrTogleHundler() {
-  //   if (attrMasterTogle.view === style.masterPanel) {
-  //     setAttrMasterTogle({ view: style.masterPanel1, icon: 'fa-solid fa-chevron-down' });
-  //   } else {
-  //     setAttrMasterTogle({ view: style.masterPanel, icon: 'fa-solid fa-chevron-up' });
-  //   }
-  // }
-
-
 
   return (
     <>

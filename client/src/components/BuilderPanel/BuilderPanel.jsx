@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function BuilderPanel() {
-  // const [blackItems, setBlockItems] = useState([]);
   const gameMap = useSelector((store) => store.gameMap);
   const boardtitle = useSelector((store) => store.boardtitle);
   const navigate = useNavigate();
@@ -18,66 +17,52 @@ export default function BuilderPanel() {
   const [images, setImages ] = useState([]);
   const [togle, setTogle] = useState({view: style.footerPanel1, icon: 'fa-solid fa-chevron-down'});
   const [imgToggle, setImgToggle] = useState(style.panelImages);
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:3001/builder')
-  //     .then((res) => {
-  //       setBlockItems(res.data)
-  //     })
-  // }, []);
-
   // proverks useffects end
   useEffect(() => {
     axios.get('http://localhost:3001/builder/categories')
       .then((res) => {
-        // console.log(res.data)
         setCategories(res.data);
-      })
+      });
   }, []);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/builder/images`)
       .then((res) => {
         setImages(res.data);
-      })
+      });
   }, []);
   // proverks useeffect end
 
-  const ttt = useSelector(state => state.tempImg);
-
   const getSrcHundler = (e) => {
     const imgSrc = e.target.alt;
-    // console.log('rrrrrrrrrrrrrrrrrrrrr', imgSrc);
     dispatch({ type: 'GET_SRC', payload: imgSrc });
-  }
+  };
 
   const saveHandler = async () => {
     if (boardtitle.title) {
-      const userName = localStorage.getItem('userName')
+      const userName = localStorage.getItem('userName');
       const response = await axios.post('http://localhost:3001/builder/save', { board: gameMap, boardTitle: boardtitle, userName: userName});
       dispatch({ type: 'DEL_BOARD_TITLE', payload: {} });
       navigate('/');
     } else {
       alert('Введите название поля для сохранения!');
     }
-  }
+  };
 
   const titleHandler = (ev) => {
     dispatch({ type: 'SET_BOARD_TITLE', payload: { [ev.target.name]: ev.target.value } });
-  }
+  };
 
   
  // proverks 
   const getImagesHundler = (id) => {
-    setImgToggle(false)
-    console.log(id);
+    setImgToggle(false);
     axios.post(`http://localhost:3001/builder/images/${id}`)
       .then((res) => {
-        console.log(res.data);
-        setImgToggle(style.panelImages)
+        setImgToggle(style.panelImages);
         setImages(res.data);
-      })
-  }
+      });
+  };
 
   function togleHundler() {
     if (togle.view === style.footerPanel) {
@@ -96,14 +81,6 @@ export default function BuilderPanel() {
       <button onClick={togleHundler} className={style.toggleBtn}><span className={style.iconText}>Builder Panel</span> <i class={togle.icon}></i></button>
     </div>
     <div className={style.panel}>
-      {/* {
-        blackItems.map(el => (
-          <div key={el.id} className={style.panelImages}>
-            <img src={el.url} alt={el.url} tabindex="0" onClick={getSrcHundler} />
-            <div className={style.title}>{el.title}</div>
-          </div>
-        ))
-      } */}
       <div className={style.mainPanel}>
         <div className={style.buttonsPanel}>
           {categories.map(cat => <button id={cat.id} key={cat.id} onClick={() => getImagesHundler(cat.id)} >{cat.title}</button> )}

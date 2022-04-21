@@ -15,7 +15,6 @@ export default function useWebRTC(roomID) {
     }
   }, [clients, updateClients]);
 
-
   const peerConnections = useRef({});
   const localMediaStream = useRef(null);
   const peerMediaElements = useRef({
