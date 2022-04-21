@@ -171,9 +171,13 @@
   background-size: contain;
 }
 
+.diceMainBoxNone {
+  display: none;
+}
+
 .diceMainBox {
   width: 100%;
-  min-height: 30vh;
+  min-height: 0vh;
   color: rgba(255, 255, 255, 0.808);
   background-color: #383644ee;
   border-radius: 12px;
@@ -181,6 +185,8 @@
   flex-direction: column;
   justify-content: start; */
   text-align: center;
+  padding-bottom: 5px;
+  
 }
 
 .usersNames {
