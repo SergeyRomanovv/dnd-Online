@@ -191,3 +191,10 @@
   text-align: left;
 } 
 
+.headerspan {
+  color: #fff;
+  box-shadow: none;
+  background-color: #6a5649;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
