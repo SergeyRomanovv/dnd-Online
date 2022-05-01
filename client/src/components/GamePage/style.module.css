@@ -6,13 +6,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: scroll;
 }
 
 .leftSide {
   /* border: 1px solid black; */
   min-height: 100vh;
   width: 13%;
-  background-image: url('../../../public/Left_1.png');
+  /* background-image: url('../../../public/Left_1.png'); */
+  background: linear-gradient(90deg, #3f3124, #ffffff00);
 }
 
 .mainSide {
@@ -27,7 +29,7 @@
   min-height: 100vh;
   width: 13%;
   /* background-color: #3e3c4d; */
-  background-image: url('../../../public/Right_1.png');
+  background: linear-gradient(90deg, #ffffff00, #3f3124);
 }
 
 .topPanel {
@@ -135,28 +137,36 @@
   cursor: pointer;
 }
 
+.chooseBoard h3 {
+  padding: 10px;
+  background: linear-gradient(90deg, #3e3c4d 20%, #524f68);
+  border-radius: 12px;
+}
+
 .gameBox {
   margin-top: 30px;
   margin-bottom: 200px;
   display: flex;
   justify-content: center;
+
 }
 
 .tableBox {
   border-collapse: collapse;
-  -webkit-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
-  box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1);
+  /* box-shadow: 8px 10px 41px 13px rgba(0, 0, 0, 1); */
 }
 
 .tableBox td {
-  width: 70px;
-  height: 70px;
+  width: 8vmin;
+  height: 8vmin;
+  max-width: 8vh;
+  max-height: 8vh;
   border: 1px solid #4e4e4e;
 }
 
 .tableBox td img {
   cursor: grab;
+  max-width: 7vh;
 }
 
 .tableBox td img:active {
