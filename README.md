@@ -4,6 +4,14 @@
 [Dungeon-online](https://dnd-deploy.herokuapp.com)
 
 ### Описание
+
+<div align='center'>
+
+##### GAME
+![alt](./DnD-game.gif)
+
+</div>
+
 - В игре присутствуют гейммастер (далее ГМ) и игроки.
 - ГМ является главным в игре. Он создает игровое поле, создает комнаты, придумывает сценарии и управляет игрой.
 - ГМ может ставить ловушки, ставить врагов, перемещать их и удалять. Для этого нужно открыть панель ГМ в нижней части экрана.
@@ -30,14 +38,27 @@
 
 1. `npm start` для старта сервера (client, server, videochat)
 
-### Управление
+### Управление:
+<div align='center'>
+
+##### BUILD MAP
+![alt](./DnD-buildMap.gif)
+
+</div>
+
+<div align='center'>
+
+##### CONTROL
 ![alt](./DnD%20-control.gif)
+
+</div>
+
 - Double click - Для расположения предмета
 - Alt+click - Для удаления предмета
 - Shift+click - Для выделения предмета
 - Ctrl+click - Для перемещения выделенного предмета
 
-### Команда
+### Команда:
 
 - https://github.com/SergeyRomanovv
 - https://github.com/AntonAtnagulov
